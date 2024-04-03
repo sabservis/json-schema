@@ -631,7 +631,7 @@ class ValidationTest extends TestCase
                 'stringProperty4' => 'toto',
                 'stringProperty5' => 'tototo',
                 'stringProperty6' => 'totototo',
-                ], ObjectObject::class);
+            ], ObjectObject::class);
         } catch (ValidationException $exception) {
             $caughtException = $exception;
         }

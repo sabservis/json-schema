@@ -74,7 +74,7 @@ class NormalizerGenerator implements GeneratorInterface
         $this->naming = $naming;
         $this->parser = $parser;
         $this->useReference = $useReference;
-        $this->useCacheableSupportsMethod = $this->canUseCacheableSupportsMethod($useCacheableSupportsMethod);
+        $this->useCacheableSupportsMethod = $useCacheableSupportsMethod;
         $this->skipNullValues = $skipNullValues;
         $this->skipRequiedFields = $skipRequiedFields;
         $this->validation = $validation;
@@ -165,13 +165,6 @@ class NormalizerGenerator implements GeneratorInterface
         ));
     }
 
-    protected function canUseCacheableSupportsMethod(?bool $useCacheableSupportsMethod): bool
-    {
-        return
-            true === $useCacheableSupportsMethod
-            || (null === $useCacheableSupportsMethod && class_exists('Symfony\Component\Serializer\Normalizer\CacheableSupportsMethodInterface'));
-    }
-
     protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array
     {
         if ($this->useReference) {
@@ -197,14 +190,9 @@ class NormalizerGenerator implements GeneratorInterface
         $methods[] = $this->createBaseNormalizerInitNormalizerMethod();
         $methods[] = $this->createProxyGetSupportedTypesMethod(array_keys($normalizers));
 
-        if ($this->useCacheableSupportsMethod) {
-            $methods[] = $this->createHasCacheableSupportsMethod();
-        }
-
         $symfony7NormalizerClass = $this->createNormalizerClass(
             'JaneObjectNormalizer',
-            $methods,
-            $this->useCacheableSupportsMethod
+            $methods
         );
 
         $methods = [];

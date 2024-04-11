@@ -106,14 +106,9 @@ class NormalizerGenerator implements GeneratorInterface
             $methods[] = $this->createNormalizeMethod($modelFqdn, $context, $class, true, $this->skipNullValues, $this->skipRequiedFields, $this->includeNullValue);
             $methods[] = $this->createGetSupportedTypesMethod($modelFqdn, $this->useCacheableSupportsMethod);
 
-            if ($this->useCacheableSupportsMethod) {
-                $methods[] = $this->createHasCacheableSupportsMethod();
-            }
-
             $symfony7NormalizerClass = $this->createNormalizerClass(
                 $class->getName() . 'Normalizer',
-                $methods,
-                $this->useCacheableSupportsMethod
+                $methods
             );
 
             $methods = [];

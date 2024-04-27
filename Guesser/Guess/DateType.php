@@ -99,9 +99,9 @@ class DateType extends ObjectType
         );
     }
 
-    public function getTypeHint(string $namespace)
+    public function getTypeHint(string $namespace): Name
     {
-        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
+        return new Name($this->preferInterface ? '\DateTimeInterface' : '\DateTime');
     }
 
     public function __toString(): string

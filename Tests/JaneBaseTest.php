@@ -62,8 +62,8 @@ class JaneBaseTest extends TestCase
         $finder->directories()->in(__DIR__ . '/fixtures');
         $finder->depth('< 1');
         $data = [];
-        foreach ($finder as $directory) {
-            $data[] = [$directory];
+        foreach ($finder as $key => $directory) {
+            $data[str_replace(__DIR__ . '/fixtures/', 'fixtures-', $key)] = [$directory];
         }
 
         return $data;

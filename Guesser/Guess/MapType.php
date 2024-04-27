@@ -4,6 +4,7 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 
 class MapType extends ArrayType
@@ -15,9 +16,9 @@ class MapType extends ArrayType
         $this->itemType = $itemType;
     }
 
-    public function getTypeHint(string $namespace)
+    public function getTypeHint(string $namespace): Identifier
     {
-        return new Name('iterable');
+        return new Identifier('iterable');
     }
 
     public function getDocTypeHint(string $namespace)

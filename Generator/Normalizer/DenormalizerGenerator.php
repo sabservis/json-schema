@@ -7,8 +7,10 @@ use Jane\Component\JsonSchema\Generator\Naming;
 use Jane\Component\JsonSchema\Guesser\Guess\ClassGuess;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
+use PhpParser\Modifiers;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
@@ -34,15 +36,24 @@ trait DenormalizerGenerator
     protected function createSupportsDenormalizationMethod(string $modelFqdn, bool $symfony7)
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => 'bool',
+            'type' => Modifiers::PUBLIC,
+            'returnType' => new Identifier('bool'),
             'params' => [
-                $symfony7 ? new Param(new Expr\Variable('data'), type: 'mixed') : new Param(new Expr\Variable('data')),
-                $symfony7 ? new Param(new Expr\Variable('type'), type: 'string') : new Param(new Expr\Variable('type')),
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string'),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
+                $symfony7
+                    ? new Param(new Expr\Variable('data'), type: new Identifier('mixed'))
+                    : new Param(new Expr\Variable('data'))
+                ,
+                $symfony7
+                    ? new Param(new Expr\Variable('type'), type: new Identifier('string'))
+                    : new Param(new Expr\Variable('type'))
+                ,
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
-            'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(new Expr\Variable('type'), new Scalar\String_($modelFqdn)))],
+            'stmts' => [new Stmt\Return_(new Expr\BinaryOp\Identical(
+                new Expr\Variable('type'),
+                new Expr\ClassConstFetch(new Name\FullyQualified($modelFqdn), new Identifier('class'))
+            ))],
         ]);
     }
 
@@ -78,7 +89,10 @@ trait DenormalizerGenerator
             );
         }
 
-        $statements[] = new Stmt\Expression(new Expr\Assign($objectVariable, new Expr\New_(new Name('\\' . $modelFqdn))));
+        $statements[] = new Stmt\Expression(new Expr\Assign(
+            $objectVariable,
+            new Expr\New_(new Name\FullyQualified($modelFqdn)),
+        ));
 
         foreach ($classGuess->getProperties() as $property) {
             if (Type::TYPE_FLOAT !== $property->getType()->getName()) {
@@ -128,7 +142,11 @@ trait DenormalizerGenerator
             $fullCondition = $baseCondition;
 
             $mutatorStmt = array_merge($denormalizationStatements, [
-                new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()), [$outputVar])),
+                new Stmt\Expression(new Expr\MethodCall(
+                    $objectVariable,
+                    $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
+                    [$outputVar],
+                )),
             ], $unset ? [new Stmt\Unset_([$propertyVar])] : []);
 
             if (!$context->isStrict() || $property->isNullable()) {
@@ -155,7 +173,11 @@ trait DenormalizerGenerator
                 );
 
                 $statements[] = new Stmt\ElseIf_($invertCondition, [
-                    new Stmt\Expression(new Expr\MethodCall($objectVariable, $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()), [new Expr\ConstFetch(new Name('null'))])),
+                    new Stmt\Expression(new Expr\MethodCall(
+                        $objectVariable,
+                        $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
+                        [new Arg(new Expr\ConstFetch(new Name('null')))],
+                    )),
                 ]);
             }
         }
@@ -189,13 +211,13 @@ trait DenormalizerGenerator
         $statements[] = new Stmt\Return_($objectVariable);
 
         return new Stmt\ClassMethod('denormalize', [
-            'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => $symfony7 ? 'mixed' : null,
+            'type' => Modifiers::PUBLIC,
+            'returnType' => $symfony7 ? new Identifier('mixed') : null,
             'params' => [
-                $symfony7 ? new Param($dataVariable, type: 'mixed') : new Param($dataVariable),
-                $symfony7 ? new Param(new Expr\Variable('type'), type: 'string') : new Param(new Expr\Variable('type')),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
+                $symfony7 ? new Param($dataVariable, type: new Identifier('mixed')) : new Param($dataVariable),
+                $symfony7 ? new Param(new Expr\Variable('type'), type: new Identifier('string')) : new Param(new Expr\Variable('type')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => $statements,
         ], [

@@ -43,6 +43,7 @@ class SchemaLoader implements SchemaLoaderInterface
             'custom-string-format-mapping',
             'validation',
             'include-null-value',
+            'php-version',
         ];
     }
 

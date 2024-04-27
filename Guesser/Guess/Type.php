@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
@@ -117,11 +118,14 @@ class Type
     }
 
     /**
-     * @return string|Name|null
+     * @return null|Node\Identifier|Node\Name
      */
-    public function getTypeHint(string $namespace)
+    public function getTypeHint(string $namespace): null|Node\Identifier|Node\Name
     {
-        return $this->phpMapping[$this->name];
+        return is_string($this->phpMapping[$this->name])
+            ? new Node\Identifier($this->phpMapping[$this->name])
+            : $this->phpMapping[$this->name]
+        ;
     }
 
     /**

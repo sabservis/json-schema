@@ -19,7 +19,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = array(
-            
+
             'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema' => 'Jane\\Component\\JsonSchema\\JsonSchema\\Normalizer\\JsonSchemaNormalizer',
             '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\JsonSchema\\JsonSchema\\Runtime\\Normalizer\\ReferenceNormalizer',
         ), $normalizersCache = [];
@@ -57,7 +57,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [\Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 } else {
@@ -68,7 +68,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = array(
-            
+
             'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema' => 'Jane\\Component\\JsonSchema\\JsonSchema\\Normalizer\\JsonSchemaNormalizer',
             '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\Component\\JsonSchema\\JsonSchema\\Runtime\\Normalizer\\ReferenceNormalizer',
         ), $normalizersCache = [];
@@ -112,7 +112,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [\Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 }

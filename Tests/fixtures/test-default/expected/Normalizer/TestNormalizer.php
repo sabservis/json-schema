@@ -22,7 +22,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
         }
         public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
@@ -88,7 +88,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setObject(null);
             }
             if (\array_key_exists('subObject', $data) && $data['subObject'] !== null) {
-                $object->setSubObject($this->denormalizer->denormalize($data['subObject'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject', 'json', $context));
+                $object->setSubObject($this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class, 'json', $context));
             }
             elseif (\array_key_exists('subObject', $data) && $data['subObject'] === null) {
                 $object->setSubObject(null);
@@ -131,7 +131,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
         }
     }
 } else {
@@ -143,7 +143,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
         }
         public function supportsNormalization($data, $format = null, array $context = []) : bool
         {
@@ -212,7 +212,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setObject(null);
             }
             if (\array_key_exists('subObject', $data) && $data['subObject'] !== null) {
-                $object->setSubObject($this->denormalizer->denormalize($data['subObject'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\TestSubObject', 'json', $context));
+                $object->setSubObject($this->denormalizer->denormalize($data['subObject'], \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class, 'json', $context));
             }
             elseif (\array_key_exists('subObject', $data) && $data['subObject'] === null) {
                 $object->setSubObject(null);
@@ -258,7 +258,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
         }
     }
 }

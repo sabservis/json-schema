@@ -22,7 +22,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
         }
         public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
         {
@@ -35,10 +35,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('child', $data)) {
-                $object->setChild($this->denormalizer->denormalize($data['child'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Childtype', 'json', $context));
+                $object->setChild($this->denormalizer->denormalize($data['child'], \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class, 'json', $context));
             }
             if (\array_key_exists('parent', $data)) {
-                $object->setParent($this->denormalizer->denormalize($data['parent'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Parenttype', 'json', $context));
+                $object->setParent($this->denormalizer->denormalize($data['parent'], \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class, 'json', $context));
             }
             return $object;
         }
@@ -55,7 +55,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
         }
     }
 } else {
@@ -67,7 +67,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use ValidatorTrait;
         public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
         }
         public function supportsNormalization($data, $format = null, array $context = []) : bool
         {
@@ -83,10 +83,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('child', $data)) {
-                $object->setChild($this->denormalizer->denormalize($data['child'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Childtype', 'json', $context));
+                $object->setChild($this->denormalizer->denormalize($data['child'], \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class, 'json', $context));
             }
             if (\array_key_exists('parent', $data)) {
-                $object->setParent($this->denormalizer->denormalize($data['parent'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Parenttype', 'json', $context));
+                $object->setParent($this->denormalizer->denormalize($data['parent'], \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class, 'json', $context));
             }
             return $object;
         }
@@ -106,7 +106,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Test' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
         }
     }
 }

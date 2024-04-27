@@ -30,7 +30,7 @@ trait PropertyGenerator
             $default = $property->getDefault();
         }
 
-        if ((null !== $default && \is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace) && \is_array($default))) {
+        if ((null !== $default && \is_scalar($default)) || (Type::TYPE_ARRAY === $property->getType()->getTypeHint($namespace)?->toString() && \is_array($default))) {
             $propertyStmt->default = $this->getDefaultAsExpr($default)->expr;
         }
 

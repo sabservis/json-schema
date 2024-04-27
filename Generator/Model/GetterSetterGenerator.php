@@ -7,7 +7,6 @@ use Jane\Component\JsonSchema\Guesser\Guess\MultipleType;
 use Jane\Component\JsonSchema\Guesser\Guess\Property;
 use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
-use PhpParser\Modifiers;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
 use PhpParser\Node\NullableType;
@@ -83,7 +82,7 @@ trait GetterSetterGenerator
             $this->getNaming()->getPrefixedMethodName('set', $property->getAccessorName()),
             [
                 // public function
-                'type' => Modifiers::PUBLIC,
+                'type' => Stmt\Class_::MODIFIER_PUBLIC,
                 // ($property)
                 'params' => [
                     new Param(

@@ -70,7 +70,6 @@ class ConfigLoader implements ConfigLoaderInterface
             'custom-string-format-mapping' => [],
             'validation' => false,
             'include-null-value' => true,
-            'php-version' => null,
         ];
     }
 }

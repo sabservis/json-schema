@@ -66,8 +66,7 @@ trait JaneObjectNormalizerGenerator
                     new Name('\ArrayObject'),
                     new Identifier('null'),
                 ])
-                : null
-            ,
+                : null,
             'params' => [
                 $symfony7 ? new Param(new Expr\Variable('object'), type: new Identifier('mixed')) : new Param(new Expr\Variable('object')),
                 $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),

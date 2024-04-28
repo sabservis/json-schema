@@ -117,12 +117,9 @@ class Type
         );
     }
 
-    /**
-     * @return null|Node\Identifier|Node\Name
-     */
-    public function getTypeHint(string $namespace): null|Node\Identifier|Node\Name
+    public function getTypeHint(string $namespace): Node\Identifier|Name|null
     {
-        return is_string($this->phpMapping[$this->name])
+        return \is_string($this->phpMapping[$this->name])
             ? new Node\Identifier($this->phpMapping[$this->name])
             : $this->phpMapping[$this->name]
         ;

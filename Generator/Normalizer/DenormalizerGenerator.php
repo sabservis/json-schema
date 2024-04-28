@@ -40,12 +40,10 @@ trait DenormalizerGenerator
             'params' => [
                 $symfony7
                     ? new Param(new Expr\Variable('data'), type: new Identifier('mixed'))
-                    : new Param(new Expr\Variable('data'))
-                ,
+                    : new Param(new Expr\Variable('data')),
                 $symfony7
                     ? new Param(new Expr\Variable('type'), type: new Identifier('string'))
-                    : new Param(new Expr\Variable('type'))
-                ,
+                    : new Param(new Expr\Variable('type')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')),
                 new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],

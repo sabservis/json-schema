@@ -271,7 +271,7 @@ class NormalizerGenerator implements GeneratorInterface
                         new Name\FullyQualified($modelFqdn),
                         new Identifier('class')
                     )
-                )
+                ),
             ]))],
         ]);
     }

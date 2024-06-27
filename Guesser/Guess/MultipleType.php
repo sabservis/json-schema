@@ -5,9 +5,9 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
-use PhpParser\Node\Identifier;
 use PhpParser\Node\Stmt;
 
 class MultipleType extends Type

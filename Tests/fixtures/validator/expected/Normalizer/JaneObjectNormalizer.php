@@ -18,12 +18,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array(
-            
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\ModelFooooooo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\ModelFoooooooNormalizer',
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooFooFooNormalizer',
-            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchema\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
-        ), $normalizersCache = [];
+        protected $normalizers = [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\ModelFoooooooNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooFooFooNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -58,7 +53,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\JsonSchema\\Tests\\Expected\\Model\\ModelFooooooo' => false, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => false, \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 } else {
@@ -68,12 +63,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array(
-            
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\ModelFooooooo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\ModelFoooooooNormalizer',
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooFooFooNormalizer',
-            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchema\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
-        ), $normalizersCache = [];
+        protected $normalizers = [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\ModelFoooooooNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooFooFooNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -114,7 +104,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\JsonSchema\\Tests\\Expected\\Model\\ModelFooooooo' => false, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\FooFooFoo' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => false, \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 }

@@ -18,13 +18,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array(
-            
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooNormalizer',
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BarItemNormalizer',
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\HelloWorld' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\HelloWorldNormalizer',
-            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchema\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
-        ), $normalizersCache = [];
+        protected $normalizers = [\Jane\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\BarItem::class => \Jane\JsonSchema\Tests\Expected\Normalizer\BarItemNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class => \Jane\JsonSchema\Tests\Expected\Normalizer\HelloWorldNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -59,7 +53,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => false, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem' => false, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\HelloWorld' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [\Jane\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\JsonSchema\Tests\Expected\Model\BarItem::class => false, \Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 } else {
@@ -69,13 +63,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array(
-            
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\FooNormalizer',
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\BarItemNormalizer',
-            'Jane\\JsonSchema\\Tests\\Expected\\Model\\HelloWorld' => 'Jane\\JsonSchema\\Tests\\Expected\\Normalizer\\HelloWorldNormalizer',
-            '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Jane\\JsonSchema\\Tests\\Expected\\Runtime\\Normalizer\\ReferenceNormalizer',
-        ), $normalizersCache = [];
+        protected $normalizers = [\Jane\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\BarItem::class => \Jane\JsonSchema\Tests\Expected\Normalizer\BarItemNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class => \Jane\JsonSchema\Tests\Expected\Normalizer\HelloWorldNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -116,7 +104,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null) : array
         {
-            return ['Jane\\JsonSchema\\Tests\\Expected\\Model\\Foo' => false, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\BarItem' => false, 'Jane\\JsonSchema\\Tests\\Expected\\Model\\HelloWorld' => false, '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => false];
+            return [\Jane\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\JsonSchema\Tests\Expected\Model\BarItem::class => false, \Jane\JsonSchema\Tests\Expected\Model\HelloWorld::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
         }
     }
 }

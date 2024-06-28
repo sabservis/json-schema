@@ -26,7 +26,7 @@ trait CodeStyleFixerTrait
             ->registerBuiltInFixers()
             ->useRuleSet(new RuleSet([
                 '@Symfony' => true,
-                'control_structure_braces' => true,
+                'string_implicit_backslashes' => true,
             ]))
             ->getFixers();
 

@@ -51,9 +51,6 @@ class JaneBaseTest extends TestCase
             );
 
             if ($expectedFile->isFile()) {
-                if (file_get_contents($expectedFile->getRealPath()) !== file_get_contents($generatedData[$expectedFile->getRelativePathname()])) {
-                    dd($expectedFile->getRealPath(), $generatedData[$expectedFile->getRelativePathname()]);
-                }
                 $this->assertEquals(
                     file_get_contents($expectedFile->getRealPath()),
                     file_get_contents($generatedData[$expectedFile->getRelativePathname()]),

@@ -58,13 +58,11 @@ class LibraryTest extends TestCase
         $this->assertEquals(
             file_get_contents(__DIR__ . '/../JsonSchema/Normalizer/JsonSchemaNormalizer.php'),
             file_get_contents(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php'),
-            __DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php' .' '.__DIR__ . '/../JsonSchema/Normalizer/JsonSchemaNormalizer.php'
         );
 
         $this->assertEquals(
             file_get_contents(__DIR__ . '/../JsonSchema/Normalizer/JaneObjectNormalizer.php'),
             file_get_contents(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php'),
-            __DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php' .' '.__DIR__ . '/../JsonSchema/Normalizer/JaneObjectNormalizer.php'
         );
     }
 }

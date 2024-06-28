@@ -13,6 +13,8 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class JaneBaseTest extends TestCase
 {
+    use CodeStyleFixerTrait;
+
     /**
      * @dataProvider schemaProvider
      */
@@ -29,8 +31,10 @@ class JaneBaseTest extends TestCase
         // 2. Compare
         $expectedFinder = new Finder();
         $expectedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
+        $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'expected');
         $generatedFinder = new Finder();
         $generatedFinder->in($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
+        $this->fixCodeStyle($testDirectory->getRealPath() . \DIRECTORY_SEPARATOR . 'generated');
         $generatedData = [];
 
         $this->assertEquals(\count($expectedFinder), \count($generatedFinder), sprintf('No same number of files for %s', $testDirectory->getRelativePathname()));
@@ -47,6 +51,9 @@ class JaneBaseTest extends TestCase
             );
 
             if ($expectedFile->isFile()) {
+                if (file_get_contents($expectedFile->getRealPath()) !== file_get_contents($generatedData[$expectedFile->getRelativePathname()])) {
+                    dd($expectedFile->getRealPath(), $generatedData[$expectedFile->getRelativePathname()]);
+                }
                 $this->assertEquals(
                     file_get_contents($expectedFile->getRealPath()),
                     file_get_contents($generatedData[$expectedFile->getRelativePathname()]),

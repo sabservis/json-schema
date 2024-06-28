@@ -26,6 +26,7 @@ trait CodeStyleFixerTrait
             ->registerBuiltInFixers()
             ->useRuleSet(new RuleSet([
                 '@Symfony' => true,
+                'return_type_declaration' => ['space_before' => 'none'],
                 'string_implicit_backslashes' => true,
             ]))
             ->getFixers();

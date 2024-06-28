@@ -7,8 +7,9 @@ use PhpCsFixer\Cache\NullCacheManager;
 use PhpCsFixer\Differ\NullDiffer;
 use PhpCsFixer\Error\ErrorsManager;
 use PhpCsFixer\Finder;
-use PhpCsFixer\Fixer;
+use PhpCsFixer\FixerFactory;
 use PhpCsFixer\Linter\Linter;
+use PhpCsFixer\RuleSet\RuleSet;
 use PhpCsFixer\Runner\Runner;
 
 trait CodeStyleFixerTrait
@@ -21,12 +22,17 @@ trait CodeStyleFixerTrait
             return [];
         }
 
+        $fixers = (new FixerFactory())
+            ->registerBuiltInFixers()
+            ->useRuleSet(new RuleSet([
+                '@Symfony' => true,
+                'control_structure_braces' => true,
+            ]))
+            ->getFixers();
+
         $runner = new Runner(
             Finder::create()->in($path),
-            [
-                new Fixer\ClassNotation\VisibilityRequiredFixer(),
-                new Fixer\Import\NoUnusedImportsFixer(),
-            ],
+            $fixers,
             new NullDiffer(),
             null,
             new ErrorsManager(),

@@ -14,6 +14,26 @@ use PhpCsFixer\Runner\Runner;
 
 trait CodeStyleFixerTrait
 {
+    private array $excludeFromCodeStyleFixer = [
+        __DIR__.'/../../../../src/Component/OpenApi2/Tests/fixtures/docker-api',
+        __DIR__.'/../../../../src/Component/OpenApi3/Tests/fixtures/api-platform-demo',
+        __DIR__.'/../../../../src/Component/OpenApi3/Tests/fixtures/github',
+        __DIR__.'/../../../../src/Component/OpenApi3/Tests/fixtures/issue-445',
+        __DIR__.'/../../../../src/Component/OpenApi3/Tests/fixtures/issue-337',
+        __DIR__.'/../../../../src/Component/OpenApi3/Tests/fixtures/twitter',
+    ];
+
+    private function shouldSkipPathForCurrentPhpParserVersion(string $path): bool
+    {
+        foreach ($this->excludeFromCodeStyleFixer as $excludePath) {
+            if (str_starts_with($path, realpath($excludePath))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function fixCodeStyle(string $path): array
     {
         $parser = InstalledVersions::getVersion('nikic/php-parser');

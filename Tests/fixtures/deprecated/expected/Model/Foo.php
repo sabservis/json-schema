@@ -12,7 +12,7 @@ class Foo
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Foo
      *
      * @return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -46,7 +46,7 @@ class Foo
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -59,7 +59,7 @@ class Foo
      *
      * @return string
      */
-    public function getFoo() : string
+    public function getFoo(): string
     {
         return $this->foo;
     }
@@ -72,7 +72,7 @@ class Foo
      *
      * @return self
      */
-    public function setFoo(string $foo) : self
+    public function setFoo(string $foo): self
     {
         $this->initialized['foo'] = true;
         $this->foo = $foo;

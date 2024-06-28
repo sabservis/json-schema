@@ -4,7 +4,7 @@ namespace Jane\Component\JsonSchema\Tests\Expected\Schema1\Runtime\Normalizer;
 
 trait CheckArray
 {
-    public function isOnlyNumericKeys(array $array) : bool
+    public function isOnlyNumericKeys(array $array): bool
     {
         return count(array_filter($array, function ($key) {
             return is_numeric($key);

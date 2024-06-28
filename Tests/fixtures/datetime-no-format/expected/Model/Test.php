@@ -8,7 +8,7 @@ class Test
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class Test
      *
      * @return \DateTime
      */
-    public function getDate() : \DateTime
+    public function getDate(): \DateTime
     {
         return $this->date;
     }
@@ -46,7 +46,7 @@ class Test
      *
      * @return self
      */
-    public function setDate(\DateTime $date) : self
+    public function setDate(\DateTime $date): self
     {
         $this->initialized['date'] = true;
         $this->date = $date;
@@ -57,7 +57,7 @@ class Test
      *
      * @return \DateTime|null
      */
-    public function getDateOrNull() : ?\DateTime
+    public function getDateOrNull(): ?\DateTime
     {
         return $this->dateOrNull;
     }
@@ -68,7 +68,7 @@ class Test
      *
      * @return self
      */
-    public function setDateOrNull(?\DateTime $dateOrNull) : self
+    public function setDateOrNull(?\DateTime $dateOrNull): self
     {
         $this->initialized['dateOrNull'] = true;
         $this->dateOrNull = $dateOrNull;
@@ -90,7 +90,7 @@ class Test
      *
      * @return self
      */
-    public function setDateOrNullOrInt($dateOrNullOrInt) : self
+    public function setDateOrNullOrInt($dateOrNullOrInt): self
     {
         $this->initialized['dateOrNullOrInt'] = true;
         $this->dateOrNullOrInt = $dateOrNullOrInt;

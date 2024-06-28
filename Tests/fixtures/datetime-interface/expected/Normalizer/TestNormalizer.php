@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
         {
             return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -41,12 +41,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('date', $data)) {
-                $object->setDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['date']));
+                $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
             }
             if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
                 $value = $data['dateOrNull'];
-                if (is_string($data['dateOrNull']) and false !== \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNull'])) {
-                    $value = \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNull']);
+                if (is_string($data['dateOrNull']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull'])) {
+                    $value = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull']);
                 } elseif (is_null($data['dateOrNull'])) {
                     $value = $data['dateOrNull'];
                 }
@@ -57,8 +57,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
                 $value_1 = $data['dateOrNullOrInt'];
-                if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNullOrInt'])) {
-                    $value_1 = \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNullOrInt']);
+                if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt'])) {
+                    $value_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']);
                 } elseif (is_null($data['dateOrNullOrInt'])) {
                     $value_1 = $data['dateOrNullOrInt'];
                 } elseif (is_int($data['dateOrNullOrInt'])) {
@@ -71,16 +71,16 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('date') && null !== $object->getDate()) {
-                $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
+                $data['date'] = $object->getDate()->format('Y-m-d\TH:i:sP');
             }
             if ($object->isInitialized('dateOrNull') && null !== $object->getDateOrNull()) {
                 $value = $object->getDateOrNull();
                 if (is_object($object->getDateOrNull())) {
-                    $value = $object->getDateOrNull()->format('Y-m-d\\TH:i:sP');
+                    $value = $object->getDateOrNull()->format('Y-m-d\TH:i:sP');
                 } elseif (is_null($object->getDateOrNull())) {
                     $value = $object->getDateOrNull();
                 }
@@ -89,7 +89,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('dateOrNullOrInt') && null !== $object->getDateOrNullOrInt()) {
                 $value_1 = $object->getDateOrNullOrInt();
                 if (is_object($object->getDateOrNullOrInt())) {
-                    $value_1 = $object->getDateOrNullOrInt()->format('Y-m-d\\TH:i:sP');
+                    $value_1 = $object->getDateOrNullOrInt()->format('Y-m-d\TH:i:sP');
                 } elseif (is_null($object->getDateOrNullOrInt())) {
                     $value_1 = $object->getDateOrNullOrInt();
                 } elseif (is_int($object->getDateOrNullOrInt())) {
@@ -99,7 +99,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
             return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
         }
@@ -111,11 +111,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
         {
             return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class;
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Test;
         }
@@ -135,12 +135,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('date', $data)) {
-                $object->setDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['date']));
+                $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
             }
             if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
                 $value = $data['dateOrNull'];
-                if (is_string($data['dateOrNull']) and false !== \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNull'])) {
-                    $value = \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNull']);
+                if (is_string($data['dateOrNull']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull'])) {
+                    $value = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNull']);
                 } elseif (is_null($data['dateOrNull'])) {
                     $value = $data['dateOrNull'];
                 }
@@ -151,8 +151,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
                 $value_1 = $data['dateOrNullOrInt'];
-                if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNullOrInt'])) {
-                    $value_1 = \DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['dateOrNullOrInt']);
+                if (is_string($data['dateOrNullOrInt']) and false !== \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt'])) {
+                    $value_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['dateOrNullOrInt']);
                 } elseif (is_null($data['dateOrNullOrInt'])) {
                     $value_1 = $data['dateOrNullOrInt'];
                 } elseif (is_int($data['dateOrNullOrInt'])) {
@@ -172,12 +172,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         {
             $data = [];
             if ($object->isInitialized('date') && null !== $object->getDate()) {
-                $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
+                $data['date'] = $object->getDate()->format('Y-m-d\TH:i:sP');
             }
             if ($object->isInitialized('dateOrNull') && null !== $object->getDateOrNull()) {
                 $value = $object->getDateOrNull();
                 if (is_object($object->getDateOrNull())) {
-                    $value = $object->getDateOrNull()->format('Y-m-d\\TH:i:sP');
+                    $value = $object->getDateOrNull()->format('Y-m-d\TH:i:sP');
                 } elseif (is_null($object->getDateOrNull())) {
                     $value = $object->getDateOrNull();
                 }
@@ -186,7 +186,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('dateOrNullOrInt') && null !== $object->getDateOrNullOrInt()) {
                 $value_1 = $object->getDateOrNullOrInt();
                 if (is_object($object->getDateOrNullOrInt())) {
-                    $value_1 = $object->getDateOrNullOrInt()->format('Y-m-d\\TH:i:sP');
+                    $value_1 = $object->getDateOrNullOrInt()->format('Y-m-d\TH:i:sP');
                 } elseif (is_null($object->getDateOrNullOrInt())) {
                     $value_1 = $object->getDateOrNullOrInt();
                 } elseif (is_int($object->getDateOrNullOrInt())) {
@@ -196,7 +196,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
             return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false];
         }

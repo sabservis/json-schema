@@ -19,21 +19,21 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class], $normalizersCache = [];
-        public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
         }
-        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $normalizerClass = $this->normalizers[get_class($object)];
             $normalizer = $this->getNormalizer($normalizerClass);
             return $normalizer->normalize($object, $format, $context);
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             $denormalizerClass = $this->normalizers[$type];
             $denormalizer = $this->getNormalizer($denormalizerClass);
@@ -51,7 +51,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $this->normalizersCache[$normalizerClass] = $normalizer;
             return $normalizer;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
             return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false];
         }
@@ -64,11 +64,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use CheckArray;
         use ValidatorTrait;
         protected $normalizers = [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class], $normalizersCache = [];
-        public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
         }
@@ -102,7 +102,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $this->normalizersCache[$normalizerClass] = $normalizer;
             return $normalizer;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
             return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false];
         }

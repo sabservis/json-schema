@@ -8,7 +8,7 @@ class Test
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Test
      *
      * @return string
      */
-    public function getString() : string
+    public function getString(): string
     {
         return $this->string;
     }
@@ -40,7 +40,7 @@ class Test
      *
      * @return self
      */
-    public function setString(string $string) : self
+    public function setString(string $string): self
     {
         $this->initialized['string'] = true;
         $this->string = $string;
@@ -51,7 +51,7 @@ class Test
      *
      * @return TestSubObject
      */
-    public function getSubObject() : TestSubObject
+    public function getSubObject(): TestSubObject
     {
         return $this->subObject;
     }
@@ -62,7 +62,7 @@ class Test
      *
      * @return self
      */
-    public function setSubObject(TestSubObject $subObject) : self
+    public function setSubObject(TestSubObject $subObject): self
     {
         $this->initialized['subObject'] = true;
         $this->subObject = $subObject;

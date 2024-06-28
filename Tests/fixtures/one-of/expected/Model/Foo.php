@@ -8,7 +8,7 @@ class Foo
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -34,7 +34,7 @@ class Foo
      *
      * @return self
      */
-    public function setFoo($foo) : self
+    public function setFoo($foo): self
     {
         $this->initialized['foo'] = true;
         $this->foo = $foo;

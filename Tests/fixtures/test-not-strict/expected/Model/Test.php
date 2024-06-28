@@ -8,7 +8,7 @@ class Test
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -52,7 +52,7 @@ class Test
      *
      * @return self
      */
-    public function setOnlyNull($onlyNull) : self
+    public function setOnlyNull($onlyNull): self
     {
         $this->initialized['onlyNull'] = true;
         $this->onlyNull = $onlyNull;
@@ -63,7 +63,7 @@ class Test
      *
      * @return string|null
      */
-    public function getNullOrString() : ?string
+    public function getNullOrString(): ?string
     {
         return $this->nullOrString;
     }
@@ -74,7 +74,7 @@ class Test
      *
      * @return self
      */
-    public function setNullOrString(?string $nullOrString) : self
+    public function setNullOrString(?string $nullOrString): self
     {
         $this->initialized['nullOrString'] = true;
         $this->nullOrString = $nullOrString;
@@ -85,7 +85,7 @@ class Test
      *
      * @return list<string>|null
      */
-    public function getArray() : ?array
+    public function getArray(): ?array
     {
         return $this->array;
     }
@@ -96,7 +96,7 @@ class Test
      *
      * @return self
      */
-    public function setArray(?array $array) : self
+    public function setArray(?array $array): self
     {
         $this->initialized['array'] = true;
         $this->array = $array;
@@ -107,7 +107,7 @@ class Test
      *
      * @return array<string, string>|null
      */
-    public function getObject() : ?iterable
+    public function getObject(): ?iterable
     {
         return $this->object;
     }
@@ -118,7 +118,7 @@ class Test
      *
      * @return self
      */
-    public function setObject(?iterable $object) : self
+    public function setObject(?iterable $object): self
     {
         $this->initialized['object'] = true;
         $this->object = $object;

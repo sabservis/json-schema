@@ -8,7 +8,7 @@ class Otherchildtype
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Otherchildtype
      *
      * @return string
      */
-    public function getInheritedProperty() : string
+    public function getInheritedProperty(): string
     {
         return $this->inheritedProperty;
     }
@@ -40,7 +40,7 @@ class Otherchildtype
      *
      * @return self
      */
-    public function setInheritedProperty(string $inheritedProperty) : self
+    public function setInheritedProperty(string $inheritedProperty): self
     {
         $this->initialized['inheritedProperty'] = true;
         $this->inheritedProperty = $inheritedProperty;
@@ -51,7 +51,7 @@ class Otherchildtype
      *
      * @return string
      */
-    public function getChildProperty() : string
+    public function getChildProperty(): string
     {
         return $this->childProperty;
     }
@@ -62,7 +62,7 @@ class Otherchildtype
      *
      * @return self
      */
-    public function setChildProperty(string $childProperty) : self
+    public function setChildProperty(string $childProperty): self
     {
         $this->initialized['childProperty'] = true;
         $this->childProperty = $childProperty;

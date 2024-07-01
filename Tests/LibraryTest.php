@@ -44,6 +44,7 @@ class LibraryTest extends TestCase
 
         $this->jane->generate($registry);
         $this->printer->output($registry);
+        $this->fixCodeStyle(__DIR__ . '/../JsonSchema');
         $this->fixCodeStyle($path);
 
         $this->assertFileExists(__DIR__ . '/generated/Model/JsonSchema.php');

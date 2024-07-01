@@ -25,6 +25,10 @@ trait CodeStyleFixerTrait
 
     private function shouldSkipPathForCurrentPhpParserVersion(string $path): bool
     {
+        if ($this->isLatestPhpParser()) {
+            return false;
+        }
+
         foreach ($this->excludeFromCodeStyleFixer as $excludePath) {
             if (str_starts_with($path, realpath($excludePath))) {
                 return true;
@@ -36,8 +40,7 @@ trait CodeStyleFixerTrait
 
     private function fixCodeStyle(string $path): array
     {
-        $parser = InstalledVersions::getVersion('nikic/php-parser');
-        if (version_compare($parser, '5.0', '>=')) {
+        if ($this->isLatestPhpParser()) {
             // don't run CS fixer latest PHP parser
             return [];
         }
@@ -62,5 +65,10 @@ trait CodeStyleFixerTrait
         );
 
         return $runner->fix();
+    }
+
+    private function isLatestPhpParser(): bool
+    {
+        return version_compare(InstalledVersions::getVersion('nikic/php-parser'), '5.0', '>=');
     }
 }

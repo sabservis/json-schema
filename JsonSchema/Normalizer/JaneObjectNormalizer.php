@@ -18,7 +18,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => \Jane\Component\JsonSchema\JsonSchema\Normalizer\JsonSchemaNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\JsonSchema\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => \Jane\Component\JsonSchema\JsonSchema\Normalizer\JsonSchemaNormalizer::class,
+            
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\JsonSchema\Runtime\Normalizer\ReferenceNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +68,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => \Jane\Component\JsonSchema\JsonSchema\Normalizer\JsonSchemaNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\JsonSchema\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => \Jane\Component\JsonSchema\JsonSchema\Normalizer\JsonSchemaNormalizer::class,
+            
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\Component\JsonSchema\JsonSchema\Runtime\Normalizer\ReferenceNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);

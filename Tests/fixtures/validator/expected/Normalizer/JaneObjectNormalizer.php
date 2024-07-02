@@ -18,7 +18,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\ModelFoooooooNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooFooFooNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\ModelFoooooooNormalizer::class,
+            
+            \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooFooFooNormalizer::class,
+            
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +70,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\ModelFoooooooNormalizer::class, \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooFooFooNormalizer::class, \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\JsonSchema\Tests\Expected\Model\ModelFooooooo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\ModelFoooooooNormalizer::class,
+            
+            \Jane\JsonSchema\Tests\Expected\Model\FooFooFoo::class => \Jane\JsonSchema\Tests\Expected\Normalizer\FooFooFooNormalizer::class,
+            
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \Jane\JsonSchema\Tests\Expected\Runtime\Normalizer\ReferenceNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);

@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -181,18 +182,15 @@ class NormalizerGenerator implements GeneratorInterface
                             new Expr\ClassConstFetch(
                                 new Name\FullyQualified($key),
                                 new Identifier('class')
-                            )
+                            ),
+                            attributes: ['comments' => [new Comment('')]]
                         );
                     },
                     array_keys($normalizers),
                     $normalizers,
-                )
+                ),
             )
         );
-        if (isset($propertyStmt->default->items[0]) && $propertyStmt->default->items[0] instanceof Expr\ArrayItem) {
-            // force the array to be dumped multiline by adding a comment
-            $propertyStmt->default->items[0]->setAttribute('comments', [new \PhpParser\Comment('')]);
-        }
         $properties[] = new Stmt\PropertyProperty('normalizersCache', new Expr\Array_());
 
         $methods = [];

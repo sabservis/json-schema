@@ -18,7 +18,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestSubObjectNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestSubObjectNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +68,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestSubObjectNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\TestSubObject::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestSubObjectNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);

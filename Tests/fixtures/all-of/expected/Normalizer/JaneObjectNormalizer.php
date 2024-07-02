@@ -18,7 +18,24 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
@@ -63,7 +80,24 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class], $normalizersCache = [];
+        protected $normalizers = [
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\TestNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\OtherchildtypeNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ChildtypeNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\ParenttypeNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\FooNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BarNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazNormalizer::class,
+            
+            \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => \Jane\Component\JsonSchema\Tests\Expected\Normalizer\BazBazNormalizer::class,
+        ], $normalizersCache = [];
         public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);

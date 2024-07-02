@@ -41,12 +41,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('date', $data)) {
-                $object->setDate(((new \DateTime($data['date']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['date']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['date']));
+                $object->setDate((new \DateTime($data['date']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['date']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['date']));
             }
             if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
                 $value = $data['dateOrNull'];
-                if (is_string($data['dateOrNull']) and false !== (((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']))) {
-                    $value = ((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']);
+                if (is_string($data['dateOrNull']) and false !== ((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']))) {
+                    $value = (new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']);
                 } elseif (is_null($data['dateOrNull'])) {
                     $value = $data['dateOrNull'];
                 }
@@ -57,8 +57,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
                 $value_1 = $data['dateOrNullOrInt'];
-                if (is_string($data['dateOrNullOrInt']) and false !== (((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']))) {
-                    $value_1 = ((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
+                if (is_string($data['dateOrNullOrInt']) and false !== ((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']))) {
+                    $value_1 = (new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
                 } elseif (is_null($data['dateOrNullOrInt'])) {
                     $value_1 = $data['dateOrNullOrInt'];
                 } elseif (is_int($data['dateOrNullOrInt'])) {
@@ -135,12 +135,12 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('date', $data)) {
-                $object->setDate(((new \DateTime($data['date']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['date']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['date']));
+                $object->setDate((new \DateTime($data['date']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['date']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['date']));
             }
             if (\array_key_exists('dateOrNull', $data) && $data['dateOrNull'] !== null) {
                 $value = $data['dateOrNull'];
-                if (is_string($data['dateOrNull']) and false !== (((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']))) {
-                    $value = ((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']);
+                if (is_string($data['dateOrNull']) and false !== ((new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']))) {
+                    $value = (new \DateTime($data['dateOrNull']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNull']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNull']);
                 } elseif (is_null($data['dateOrNull'])) {
                     $value = $data['dateOrNull'];
                 }
@@ -151,8 +151,8 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             if (\array_key_exists('dateOrNullOrInt', $data) && $data['dateOrNullOrInt'] !== null) {
                 $value_1 = $data['dateOrNullOrInt'];
-                if (is_string($data['dateOrNullOrInt']) and false !== (((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']))) {
-                    $value_1 = ((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z') ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
+                if (is_string($data['dateOrNullOrInt']) and false !== ((new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']))) {
+                    $value_1 = (new \DateTime($data['dateOrNullOrInt']))->getTimezone()->getName() == 'Z' ? (new \DateTime($data['dateOrNullOrInt']))->setTimezone(new \DateTimeZone('GMT')) : new \DateTime($data['dateOrNullOrInt']);
                 } elseif (is_null($data['dateOrNullOrInt'])) {
                     $value_1 = $data['dateOrNullOrInt'];
                 } elseif (is_int($data['dateOrNullOrInt'])) {

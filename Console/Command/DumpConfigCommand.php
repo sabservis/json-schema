@@ -20,7 +20,7 @@ class DumpConfigCommand extends Command
         $this->configLoader = $configLoader;
     }
 
-    public function configure()
+    public function configure(): void
     {
         $this->setName('dump-config');
         $this->setDescription('Dump Jane configuration for debugging purpose');

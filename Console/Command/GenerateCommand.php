@@ -32,7 +32,7 @@ class GenerateCommand extends Command
     /**
      * {@inheritdoc}
      */
-    public function configure()
+    public function configure(): void
     {
         $this->setName('generate');
         $this->setDescription('Generate a set of class and normalizers given a specific Json Schema file');

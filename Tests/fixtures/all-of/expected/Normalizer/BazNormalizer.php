@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Baz';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Baz;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Baz();
             if (null === $data || false === \is_array($data)) {
@@ -38,14 +38,14 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setFoo($data['foo']);
             }
             if (\array_key_exists('Bar', $data)) {
-                $object->setBar($this->denormalizer->denormalize($data['Bar'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Bar', 'json', $context));
+                $object->setBar($this->denormalizer->denormalize($data['Bar'], \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class, 'json', $context));
             }
             if (\array_key_exists('Baz', $data)) {
-                $object->setBaz($this->denormalizer->denormalize($data['Baz'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\BazBaz', 'json', $context));
+                $object->setBaz($this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class, 'json', $context));
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('foo') && null !== $object->getFoo()) {
@@ -59,9 +59,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Baz' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false];
         }
     }
 } else {
@@ -71,11 +71,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Baz';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class;
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Baz;
         }
@@ -92,10 +92,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 $object->setFoo($data['foo']);
             }
             if (\array_key_exists('Bar', $data)) {
-                $object->setBar($this->denormalizer->denormalize($data['Bar'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Bar', 'json', $context));
+                $object->setBar($this->denormalizer->denormalize($data['Bar'], \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class, 'json', $context));
             }
             if (\array_key_exists('Baz', $data)) {
-                $object->setBaz($this->denormalizer->denormalize($data['Baz'], 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\BazBaz', 'json', $context));
+                $object->setBaz($this->denormalizer->denormalize($data['Baz'], \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class, 'json', $context));
             }
             return $object;
         }
@@ -116,9 +116,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Baz' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false];
         }
     }
 }

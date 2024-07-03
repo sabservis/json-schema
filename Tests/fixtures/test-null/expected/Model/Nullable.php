@@ -8,7 +8,7 @@ class Nullable
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -52,7 +52,7 @@ class Nullable
      *
      * @return self
      */
-    public function setOnlyNull($onlyNull) : self
+    public function setOnlyNull($onlyNull): self
     {
         $this->initialized['onlyNull'] = true;
         $this->onlyNull = $onlyNull;
@@ -63,7 +63,7 @@ class Nullable
      *
      * @return string|null
      */
-    public function getNullOrString() : ?string
+    public function getNullOrString(): ?string
     {
         return $this->nullOrString;
     }
@@ -74,7 +74,7 @@ class Nullable
      *
      * @return self
      */
-    public function setNullOrString(?string $nullOrString) : self
+    public function setNullOrString(?string $nullOrString): self
     {
         $this->initialized['nullOrString'] = true;
         $this->nullOrString = $nullOrString;
@@ -85,7 +85,7 @@ class Nullable
      *
      * @return string
      */
-    public function getRequired() : string
+    public function getRequired(): string
     {
         return $this->required;
     }
@@ -96,7 +96,7 @@ class Nullable
      *
      * @return self
      */
-    public function setRequired(string $required) : self
+    public function setRequired(string $required): self
     {
         $this->initialized['required'] = true;
         $this->required = $required;
@@ -107,7 +107,7 @@ class Nullable
      *
      * @return string|null
      */
-    public function getRequiredNull() : ?string
+    public function getRequiredNull(): ?string
     {
         return $this->requiredNull;
     }
@@ -118,7 +118,7 @@ class Nullable
      *
      * @return self
      */
-    public function setRequiredNull(?string $requiredNull) : self
+    public function setRequiredNull(?string $requiredNull): self
     {
         $this->initialized['requiredNull'] = true;
         $this->requiredNull = $requiredNull;

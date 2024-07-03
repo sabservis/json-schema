@@ -3,6 +3,7 @@
 namespace Jane\Component\JsonSchema\Guesser\Guess;
 
 use Jane\Component\JsonSchema\Generator\Context\Context;
+use PhpParser\Node;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
@@ -107,9 +108,9 @@ class ArrayType extends Type
         return [$statements, $valuesVar];
     }
 
-    public function getTypeHint(string $namespace)
+    public function getTypeHint(string $namespace): Node\Identifier
     {
-        return 'array';
+        return new Node\Identifier('array');
     }
 
     protected function createArrayValueStatement(): Expr

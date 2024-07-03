@@ -108,7 +108,7 @@ class ValidatorGenerator implements GeneratorInterface
                                     'stmts' => [
                                         new Node\Stmt\Return_(new Expr\Array_($constraintsItems)),
                                     ],
-                                    'returnType' => 'array',
+                                    'returnType' => new Node\Identifier('array'),
                                 ]
                             ),
                         ],

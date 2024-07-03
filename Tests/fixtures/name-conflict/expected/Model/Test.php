@@ -8,7 +8,7 @@ class Test
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Test
      *
      * @return string
      */
-    public function getMsgref() : string
+    public function getMsgref(): string
     {
         return $this->msgref;
     }
@@ -40,7 +40,7 @@ class Test
      *
      * @return self
      */
-    public function setMsgref(string $msgref) : self
+    public function setMsgref(string $msgref): self
     {
         $this->initialized['msgref'] = true;
         $this->msgref = $msgref;
@@ -51,7 +51,7 @@ class Test
      *
      * @return string
      */
-    public function getMsgRef2() : string
+    public function getMsgRef2(): string
     {
         return $this->msgRef2;
     }
@@ -62,7 +62,7 @@ class Test
      *
      * @return self
      */
-    public function setMsgRef2(string $msgRef2) : self
+    public function setMsgRef2(string $msgRef2): self
     {
         $this->initialized['msgRef2'] = true;
         $this->msgRef2 = $msgRef2;

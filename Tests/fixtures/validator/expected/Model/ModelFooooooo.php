@@ -8,7 +8,7 @@ class ModelFooooooo
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -161,7 +161,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getEnumString() : string
+    public function getEnumString(): string
     {
         return $this->enumString;
     }
@@ -172,7 +172,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setEnumString(string $enumString) : self
+    public function setEnumString(string $enumString): self
     {
         $this->initialized['enumString'] = true;
         $this->enumString = $enumString;
@@ -183,7 +183,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getEnumArrayString() : string
+    public function getEnumArrayString(): string
     {
         return $this->enumArrayString;
     }
@@ -194,7 +194,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setEnumArrayString(string $enumArrayString) : self
+    public function setEnumArrayString(string $enumArrayString): self
     {
         $this->initialized['enumArrayString'] = true;
         $this->enumArrayString = $enumArrayString;
@@ -216,7 +216,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setEnumNoType($enumNoType) : self
+    public function setEnumNoType($enumNoType): self
     {
         $this->initialized['enumNoType'] = true;
         $this->enumNoType = $enumNoType;
@@ -227,7 +227,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getConstString() : string
+    public function getConstString(): string
     {
         return $this->constString;
     }
@@ -238,7 +238,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setConstString(string $constString) : self
+    public function setConstString(string $constString): self
     {
         $this->initialized['constString'] = true;
         $this->constString = $constString;
@@ -249,7 +249,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getMinLengthString() : string
+    public function getMinLengthString(): string
     {
         return $this->minLengthString;
     }
@@ -260,7 +260,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setMinLengthString(string $minLengthString) : self
+    public function setMinLengthString(string $minLengthString): self
     {
         $this->initialized['minLengthString'] = true;
         $this->minLengthString = $minLengthString;
@@ -271,7 +271,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getMaxLengthString() : string
+    public function getMaxLengthString(): string
     {
         return $this->maxLengthString;
     }
@@ -282,7 +282,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setMaxLengthString(string $maxLengthString) : self
+    public function setMaxLengthString(string $maxLengthString): self
     {
         $this->initialized['maxLengthString'] = true;
         $this->maxLengthString = $maxLengthString;
@@ -293,7 +293,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getMinMaxLengthString() : string
+    public function getMinMaxLengthString(): string
     {
         return $this->minMaxLengthString;
     }
@@ -304,7 +304,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setMinMaxLengthString(string $minMaxLengthString) : self
+    public function setMinMaxLengthString(string $minMaxLengthString): self
     {
         $this->initialized['minMaxLengthString'] = true;
         $this->minMaxLengthString = $minMaxLengthString;
@@ -315,7 +315,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getPatternString() : string
+    public function getPatternString(): string
     {
         return $this->patternString;
     }
@@ -326,7 +326,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setPatternString(string $patternString) : self
+    public function setPatternString(string $patternString): self
     {
         $this->initialized['patternString'] = true;
         $this->patternString = $patternString;
@@ -337,7 +337,7 @@ class ModelFooooooo
      *
      * @return list<string>
      */
-    public function getArrayMinItems() : array
+    public function getArrayMinItems(): array
     {
         return $this->arrayMinItems;
     }
@@ -348,7 +348,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setArrayMinItems(array $arrayMinItems) : self
+    public function setArrayMinItems(array $arrayMinItems): self
     {
         $this->initialized['arrayMinItems'] = true;
         $this->arrayMinItems = $arrayMinItems;
@@ -359,7 +359,7 @@ class ModelFooooooo
      *
      * @return list<string>
      */
-    public function getArrayMaxItems() : array
+    public function getArrayMaxItems(): array
     {
         return $this->arrayMaxItems;
     }
@@ -370,7 +370,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setArrayMaxItems(array $arrayMaxItems) : self
+    public function setArrayMaxItems(array $arrayMaxItems): self
     {
         $this->initialized['arrayMaxItems'] = true;
         $this->arrayMaxItems = $arrayMaxItems;
@@ -381,7 +381,7 @@ class ModelFooooooo
      *
      * @return list<string>
      */
-    public function getArrayMinMaxItems() : array
+    public function getArrayMinMaxItems(): array
     {
         return $this->arrayMinMaxItems;
     }
@@ -392,7 +392,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setArrayMinMaxItems(array $arrayMinMaxItems) : self
+    public function setArrayMinMaxItems(array $arrayMinMaxItems): self
     {
         $this->initialized['arrayMinMaxItems'] = true;
         $this->arrayMinMaxItems = $arrayMinMaxItems;
@@ -403,7 +403,7 @@ class ModelFooooooo
      *
      * @return list<string>
      */
-    public function getArrayUnique() : array
+    public function getArrayUnique(): array
     {
         return $this->arrayUnique;
     }
@@ -414,7 +414,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setArrayUnique(array $arrayUnique) : self
+    public function setArrayUnique(array $arrayUnique): self
     {
         $this->initialized['arrayUnique'] = true;
         $this->arrayUnique = $arrayUnique;
@@ -425,7 +425,7 @@ class ModelFooooooo
      *
      * @return int
      */
-    public function getNumericMultipleOf() : int
+    public function getNumericMultipleOf(): int
     {
         return $this->numericMultipleOf;
     }
@@ -436,7 +436,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setNumericMultipleOf(int $numericMultipleOf) : self
+    public function setNumericMultipleOf(int $numericMultipleOf): self
     {
         $this->initialized['numericMultipleOf'] = true;
         $this->numericMultipleOf = $numericMultipleOf;
@@ -447,7 +447,7 @@ class ModelFooooooo
      *
      * @return int
      */
-    public function getNumericMaximum() : int
+    public function getNumericMaximum(): int
     {
         return $this->numericMaximum;
     }
@@ -458,7 +458,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setNumericMaximum(int $numericMaximum) : self
+    public function setNumericMaximum(int $numericMaximum): self
     {
         $this->initialized['numericMaximum'] = true;
         $this->numericMaximum = $numericMaximum;
@@ -469,7 +469,7 @@ class ModelFooooooo
      *
      * @return int
      */
-    public function getNumericExclusiveMaximum() : int
+    public function getNumericExclusiveMaximum(): int
     {
         return $this->numericExclusiveMaximum;
     }
@@ -480,7 +480,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setNumericExclusiveMaximum(int $numericExclusiveMaximum) : self
+    public function setNumericExclusiveMaximum(int $numericExclusiveMaximum): self
     {
         $this->initialized['numericExclusiveMaximum'] = true;
         $this->numericExclusiveMaximum = $numericExclusiveMaximum;
@@ -491,7 +491,7 @@ class ModelFooooooo
      *
      * @return int
      */
-    public function getNumericMinimum() : int
+    public function getNumericMinimum(): int
     {
         return $this->numericMinimum;
     }
@@ -502,7 +502,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setNumericMinimum(int $numericMinimum) : self
+    public function setNumericMinimum(int $numericMinimum): self
     {
         $this->initialized['numericMinimum'] = true;
         $this->numericMinimum = $numericMinimum;
@@ -513,7 +513,7 @@ class ModelFooooooo
      *
      * @return int
      */
-    public function getNumericExclusiveMinimum() : int
+    public function getNumericExclusiveMinimum(): int
     {
         return $this->numericExclusiveMinimum;
     }
@@ -524,7 +524,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setNumericExclusiveMinimum(int $numericExclusiveMinimum) : self
+    public function setNumericExclusiveMinimum(int $numericExclusiveMinimum): self
     {
         $this->initialized['numericExclusiveMinimum'] = true;
         $this->numericExclusiveMinimum = $numericExclusiveMinimum;
@@ -535,7 +535,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getEmailFormat() : string
+    public function getEmailFormat(): string
     {
         return $this->emailFormat;
     }
@@ -546,7 +546,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setEmailFormat(string $emailFormat) : self
+    public function setEmailFormat(string $emailFormat): self
     {
         $this->initialized['emailFormat'] = true;
         $this->emailFormat = $emailFormat;
@@ -557,7 +557,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getIpv4Format() : string
+    public function getIpv4Format(): string
     {
         return $this->ipv4Format;
     }
@@ -568,7 +568,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setIpv4Format(string $ipv4Format) : self
+    public function setIpv4Format(string $ipv4Format): self
     {
         $this->initialized['ipv4Format'] = true;
         $this->ipv4Format = $ipv4Format;
@@ -579,7 +579,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getIpv6Format() : string
+    public function getIpv6Format(): string
     {
         return $this->ipv6Format;
     }
@@ -590,7 +590,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setIpv6Format(string $ipv6Format) : self
+    public function setIpv6Format(string $ipv6Format): self
     {
         $this->initialized['ipv6Format'] = true;
         $this->ipv6Format = $ipv6Format;
@@ -601,7 +601,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getUriFormat() : string
+    public function getUriFormat(): string
     {
         return $this->uriFormat;
     }
@@ -612,7 +612,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setUriFormat(string $uriFormat) : self
+    public function setUriFormat(string $uriFormat): self
     {
         $this->initialized['uriFormat'] = true;
         $this->uriFormat = $uriFormat;
@@ -623,7 +623,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getIriFormat() : string
+    public function getIriFormat(): string
     {
         return $this->iriFormat;
     }
@@ -634,7 +634,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setIriFormat(string $iriFormat) : self
+    public function setIriFormat(string $iriFormat): self
     {
         $this->initialized['iriFormat'] = true;
         $this->iriFormat = $iriFormat;
@@ -645,7 +645,7 @@ class ModelFooooooo
      *
      * @return string
      */
-    public function getUuidFormat() : string
+    public function getUuidFormat(): string
     {
         return $this->uuidFormat;
     }
@@ -656,7 +656,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setUuidFormat(string $uuidFormat) : self
+    public function setUuidFormat(string $uuidFormat): self
     {
         $this->initialized['uuidFormat'] = true;
         $this->uuidFormat = $uuidFormat;
@@ -667,7 +667,7 @@ class ModelFooooooo
      *
      * @return FooFooFoo
      */
-    public function getFoo() : FooFooFoo
+    public function getFoo(): FooFooFoo
     {
         return $this->foo;
     }
@@ -678,7 +678,7 @@ class ModelFooooooo
      *
      * @return self
      */
-    public function setFoo(FooFooFoo $foo) : self
+    public function setFoo(FooFooFoo $foo): self
     {
         $this->initialized['foo'] = true;
         $this->foo = $foo;

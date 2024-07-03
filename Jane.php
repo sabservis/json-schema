@@ -94,7 +94,7 @@ class Jane extends ChainGenerator
         $serializer = self::buildSerializer();
         $chainGuesser = JsonSchemaGuesserFactory::create($serializer, $options);
         $naming = new Naming();
-        $parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        $parser = (new ParserFactory())->createForHostVersion();
 
         $self = new self($serializer, $chainGuesser, $naming, $options['strict']);
         $self->addGenerator(new ModelGenerator($naming, $parser));

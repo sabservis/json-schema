@@ -5,7 +5,10 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Expr\ClassConstFetch;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
+use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Scalar;
 
 class ObjectType extends Type
@@ -37,7 +40,10 @@ class ObjectType extends Type
 
         return new Expr\MethodCall($denormalizerVar, 'denormalize', [
             new Arg($input),
-            new Arg(new Scalar\String_($this->getFqdn(false))),
+            new Arg(new ClassConstFetch(
+                new FullyQualified($this->getFqdn(false)),
+                new Identifier('class')
+            )),
             new Arg(new Scalar\String_('json')),
             new Arg(new Expr\Variable('context')),
         ]);
@@ -109,19 +115,19 @@ class ObjectType extends Type
     /**
      * ({@inheritDoc}.
      */
-    public function getTypeHint(string $currentNamespace)
+    public function getTypeHint(string $currentNamespace): Name
     {
         if ('\\' . $currentNamespace . '\\' . $this->className === $this->getFqdn()) {
-            return $this->className;
+            return new Name($this->className);
         }
 
-        return $this->getFqdn();
+        return new Name($this->getFqdn());
     }
 
     /**
      * ({@inheritDoc}.
      */
-    public function getDocTypeHint(string $namespace)
+    public function getDocTypeHint(string $namespace): Name
     {
         return $this->getTypeHint($namespace);
     }

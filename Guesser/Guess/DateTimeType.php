@@ -78,9 +78,9 @@ class DateTimeType extends ObjectType
         );
     }
 
-    public function getTypeHint(string $namespace)
+    public function getTypeHint(string $namespace): Name
     {
-        return $this->preferInterface ? '\DateTimeInterface' : '\DateTime';
+        return new Name($this->preferInterface ? '\DateTimeInterface' : '\DateTime');
     }
 
     public function __toString(): string
@@ -95,8 +95,8 @@ class DateTimeType extends ObjectType
             $new = new Expr\New_(new Name('\DateTime'), [new Arg($input)]);
             // (new \DateTime($data))->getTimezone()->getName()
             $timezoneName = new Expr\MethodCall(
-                new Expr\MethodCall($new, new Name('getTimezone')),
-                new Name('getName')
+                new Expr\MethodCall($new, 'getTimezone'),
+                'getName'
             );
             // new \DateTimeZone('GMT')
             $gmtTimezone = new Expr\New_(new Name('\DateTimeZone'), [new Scalar\String_('GMT')]);
@@ -104,7 +104,7 @@ class DateTimeType extends ObjectType
             // (new \DateTime($data))->getTimezone()->getName() === 'Z' ? (new \DateTime($data))->setTimezone(new \DateTimeZone('GMT')) : \DateTime($data)
             return new Expr\Ternary(
                 new Expr\BinaryOp\Equal($timezoneName, new Scalar\String_('Z')),
-                new Expr\MethodCall($new, new Name('setTimezone'), [new Arg($gmtTimezone)]),
+                new Expr\MethodCall($new, 'setTimezone', [new Arg($gmtTimezone)]),
                 $new
             );
         }

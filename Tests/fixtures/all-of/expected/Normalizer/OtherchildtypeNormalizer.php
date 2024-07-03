@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             $object = new \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype();
             if (null === $data || false === \is_array($data)) {
@@ -42,7 +42,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('inheritedProperty') && null !== $object->getInheritedProperty()) {
@@ -53,9 +53,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false];
         }
     }
 } else {
@@ -65,11 +65,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype';
+            return $type === \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class;
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype;
         }
@@ -104,9 +104,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Model\\Otherchildtype' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false];
         }
     }
 }

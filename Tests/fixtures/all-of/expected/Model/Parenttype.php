@@ -8,7 +8,7 @@ class Parenttype
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Parenttype
      *
      * @return string
      */
-    public function getInheritedProperty() : string
+    public function getInheritedProperty(): string
     {
         return $this->inheritedProperty;
     }
@@ -34,7 +34,7 @@ class Parenttype
      *
      * @return self
      */
-    public function setInheritedProperty(string $inheritedProperty) : self
+    public function setInheritedProperty(string $inheritedProperty): self
     {
         $this->initialized['inheritedProperty'] = true;
         $this->inheritedProperty = $inheritedProperty;

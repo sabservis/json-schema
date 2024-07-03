@@ -7,6 +7,7 @@ use Jane\Component\JsonSchema\Generator\Normalizer\DenormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\JaneObjectNormalizerGenerator;
 use Jane\Component\JsonSchema\Generator\Normalizer\NormalizerGenerator as NormalizerGeneratorTrait;
 use Jane\Component\JsonSchema\Registry\Schema;
+use PhpParser\Comment;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
@@ -163,21 +164,34 @@ class NormalizerGenerator implements GeneratorInterface
     protected function createJaneObjectNormalizerClass(Schema $schema, array $normalizers): array
     {
         if ($this->useReference) {
-            $normalizers['\\Jane\\Component\\JsonSchemaRuntime\\Reference'] = '\\' . $this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ReferenceNormalizer');
+            $normalizers['Jane\\Component\\JsonSchemaRuntime\\Reference'] = $this->naming->getRuntimeClassFQCN($schema->getNamespace(), ['Normalizer'], 'ReferenceNormalizer');
         }
 
         $properties = [];
         $propertyName = $this->getNaming()->getPropertyName('normalizers');
-        $propertyStmt = new Stmt\PropertyProperty($propertyName);
-        $propertyStmt->default = $this->parser->parse('<?php ' . var_export($normalizers, true) . ';')[0]->expr;
-        if (isset($propertyStmt->default->items[0]) && $propertyStmt->default->items[0] instanceof Expr\ArrayItem) {
-            // force the array to be dumped multiline by adding a comment
-            $propertyStmt->default->items[0]->setAttribute('comments', [new \PhpParser\Comment('')]);
-        }
-        $properties[] = $propertyStmt;
-        $propertyStmt = new Stmt\PropertyProperty('normalizersCache');
-        $propertyStmt->default = new Expr\Array_();
-        $properties[] = $propertyStmt;
+        $properties[] = new Stmt\PropertyProperty(
+            $propertyName,
+            new Expr\Array_(
+                array_map(
+                    function ($key, $value) {
+                        return new Expr\ArrayItem(
+                            new Expr\ClassConstFetch(
+                                new Name\FullyQualified($value),
+                                new Identifier('class')
+                            ),
+                            new Expr\ClassConstFetch(
+                                new Name\FullyQualified($key),
+                                new Identifier('class')
+                            ),
+                            attributes: ['comments' => [new Comment('')]]
+                        );
+                    },
+                    array_keys($normalizers),
+                    $normalizers,
+                ),
+            )
+        );
+        $properties[] = new Stmt\PropertyProperty('normalizersCache', new Expr\Array_());
 
         $methods = [];
         $methods[] = new Stmt\Property(Stmt\Class_::MODIFIER_PROTECTED, $properties);
@@ -244,14 +258,17 @@ class NormalizerGenerator implements GeneratorInterface
     {
         return new Stmt\ClassMethod('getSupportedTypes', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => 'array',
+            'returnType' => new Identifier('array'),
             'params' => [
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType('string')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Array_([
                 new Expr\ArrayItem(
                     new Expr\ConstFetch(new Name($useCacheableSupportsMethod ? 'true' : 'false')),
-                    new Scalar\String_($modelFqdn),
+                    new Expr\ClassConstFetch(
+                        new Name\FullyQualified($modelFqdn),
+                        new Identifier('class')
+                    )
                 ),
             ]))],
         ]);
@@ -270,15 +287,18 @@ class NormalizerGenerator implements GeneratorInterface
         foreach ($modelsFqdn as $modelFqdn) {
             $arrayItems[] = new Expr\ArrayItem(
                 new Expr\ConstFetch(new Name('false')), // we don't want proxy Normalizer to be cached, never
-                new Scalar\String_($modelFqdn),
+                new Expr\ClassConstFetch(
+                    new Name\FullyQualified($modelFqdn),
+                    new Identifier('class')
+                ),
             );
         }
 
         return new Stmt\ClassMethod('getSupportedTypes', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => 'array',
+            'returnType' => new Identifier('array'),
             'params' => [
-                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType('string')),
+                new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new NullableType(new Identifier('string'))),
             ],
             'stmts' => [new Stmt\Return_(new Expr\Array_($arrayItems))],
         ]);

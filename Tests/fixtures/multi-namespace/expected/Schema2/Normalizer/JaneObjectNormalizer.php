@@ -18,25 +18,25 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array(
+        protected $normalizers = [
             
-            'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Normalizer\\FooNormalizer',
-        ), $normalizersCache = [];
-        public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+            \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Schema2\Normalizer\FooNormalizer::class,
+        ], $normalizersCache = [];
+        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
         }
-        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $normalizerClass = $this->normalizers[get_class($object)];
             $normalizer = $this->getNormalizer($normalizerClass);
             return $normalizer->normalize($object, $format, $context);
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             $denormalizerClass = $this->normalizers[$type];
             $denormalizer = $this->getNormalizer($denormalizerClass);
@@ -54,9 +54,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $this->normalizersCache[$normalizerClass] = $normalizer;
             return $normalizer;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false];
         }
     }
 } else {
@@ -66,15 +66,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        protected $normalizers = array(
+        protected $normalizers = [
             
-            'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => 'Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Normalizer\\FooNormalizer',
-        ), $normalizersCache = [];
-        public function supportsDenormalization($data, $type, $format = null, array $context = []) : bool
+            \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => \Jane\Component\JsonSchema\Tests\Expected\Schema2\Normalizer\FooNormalizer::class,
+        ], $normalizersCache = [];
+        public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
         {
             return array_key_exists($type, $this->normalizers);
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
         }
@@ -108,9 +108,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             $this->normalizersCache[$normalizerClass] = $normalizer;
             return $normalizer;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\Tests\\Expected\\Schema2\\Model\\Foo' => false];
+            return [\Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false];
         }
     }
 }

@@ -11,6 +11,8 @@ use PHPUnit\Framework\TestCase;
 
 class LibraryTest extends TestCase
 {
+    use CodeStyleFixerTrait;
+
     /**
      * @var Jane
      */
@@ -34,12 +36,16 @@ class LibraryTest extends TestCase
      */
     public function testLibrary(): void
     {
+        $path = __DIR__ . '/generated';
+
         $registry = new Registry();
-        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\Component\JsonSchema\JsonSchema', __DIR__ . '/generated', 'JsonSchema'));
-        $registry->addOutputDirectory(__DIR__ . '/generated');
+        $registry->addSchema(new Schema(__DIR__ . '/data/json-schema.json', 'Jane\Component\JsonSchema\JsonSchema', $path, 'JsonSchema'));
+        $registry->addOutputDirectory($path);
 
         $this->jane->generate($registry);
         $this->printer->output($registry);
+        $this->fixCodeStyle(__DIR__ . '/../JsonSchema');
+        $this->fixCodeStyle($path);
 
         $this->assertFileExists(__DIR__ . '/generated/Model/JsonSchema.php');
         $this->assertFileExists(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php');
@@ -52,12 +58,12 @@ class LibraryTest extends TestCase
 
         $this->assertEquals(
             file_get_contents(__DIR__ . '/../JsonSchema/Normalizer/JsonSchemaNormalizer.php'),
-            file_get_contents(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php')
+            file_get_contents(__DIR__ . '/generated/Normalizer/JsonSchemaNormalizer.php'),
         );
 
         $this->assertEquals(
             file_get_contents(__DIR__ . '/../JsonSchema/Normalizer/JaneObjectNormalizer.php'),
-            file_get_contents(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php')
+            file_get_contents(__DIR__ . '/generated/Normalizer/JaneObjectNormalizer.php'),
         );
     }
 }

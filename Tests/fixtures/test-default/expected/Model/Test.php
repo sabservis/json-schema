@@ -8,7 +8,7 @@ class Test
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -59,7 +59,7 @@ class Test
      *
      * @return string|null
      */
-    public function getString() : ?string
+    public function getString(): ?string
     {
         return $this->string;
     }
@@ -70,7 +70,7 @@ class Test
      *
      * @return self
      */
-    public function setString(?string $string) : self
+    public function setString(?string $string): self
     {
         $this->initialized['string'] = true;
         $this->string = $string;
@@ -81,7 +81,7 @@ class Test
      *
      * @return bool|null
      */
-    public function getBool() : ?bool
+    public function getBool(): ?bool
     {
         return $this->bool;
     }
@@ -92,7 +92,7 @@ class Test
      *
      * @return self
      */
-    public function setBool(?bool $bool) : self
+    public function setBool(?bool $bool): self
     {
         $this->initialized['bool'] = true;
         $this->bool = $bool;
@@ -103,7 +103,7 @@ class Test
      *
      * @return int|null
      */
-    public function getInteger() : ?int
+    public function getInteger(): ?int
     {
         return $this->integer;
     }
@@ -114,7 +114,7 @@ class Test
      *
      * @return self
      */
-    public function setInteger(?int $integer) : self
+    public function setInteger(?int $integer): self
     {
         $this->initialized['integer'] = true;
         $this->integer = $integer;
@@ -125,7 +125,7 @@ class Test
      *
      * @return float|null
      */
-    public function getFloat() : ?float
+    public function getFloat(): ?float
     {
         return $this->float;
     }
@@ -136,7 +136,7 @@ class Test
      *
      * @return self
      */
-    public function setFloat(?float $float) : self
+    public function setFloat(?float $float): self
     {
         $this->initialized['float'] = true;
         $this->float = $float;
@@ -147,7 +147,7 @@ class Test
      *
      * @return list<mixed>|null
      */
-    public function getArray() : ?array
+    public function getArray(): ?array
     {
         return $this->array;
     }
@@ -158,7 +158,7 @@ class Test
      *
      * @return self
      */
-    public function setArray(?array $array) : self
+    public function setArray(?array $array): self
     {
         $this->initialized['array'] = true;
         $this->array = $array;
@@ -169,7 +169,7 @@ class Test
      *
      * @return list<mixed>|null
      */
-    public function getObject() : ?array
+    public function getObject(): ?array
     {
         return $this->object;
     }
@@ -180,7 +180,7 @@ class Test
      *
      * @return self
      */
-    public function setObject(?array $object) : self
+    public function setObject(?array $object): self
     {
         $this->initialized['object'] = true;
         $this->object = $object;
@@ -191,7 +191,7 @@ class Test
      *
      * @return TestSubObject|null
      */
-    public function getSubObject() : ?TestSubObject
+    public function getSubObject(): ?TestSubObject
     {
         return $this->subObject;
     }
@@ -202,7 +202,7 @@ class Test
      *
      * @return self
      */
-    public function setSubObject(?TestSubObject $subObject) : self
+    public function setSubObject(?TestSubObject $subObject): self
     {
         $this->initialized['subObject'] = true;
         $this->subObject = $subObject;

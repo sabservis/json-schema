@@ -30,7 +30,7 @@
         "ext-json": "*",
         "doctrine/inflector": "^1.4 || ^2.0",
         "jane-php/json-schema-runtime": "^7.5",
-        "nikic/php-parser": "^4.18",
+        "nikic/php-parser": "^4.19 || ^5.1",
         "symfony/console": "^5.4 || ^6.4 || ^7.0",
         "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
         "symfony/options-resolver": "^5.4 || ^6.4 || ^7.0",
@@ -47,8 +47,7 @@
         "friendsofphp/php-cs-fixer": "Allow to automatically fix cs on generated code for better visualisation"
     },
     "conflict": {
-        "symfony/framework-bundle": "5.1.0",
-        "nikic/php-parser": "<4.0.4"
+        "symfony/framework-bundle": "5.1.0"
     },
     "extra": {
         "branch-alias": {

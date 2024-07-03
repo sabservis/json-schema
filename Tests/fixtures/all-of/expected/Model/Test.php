@@ -8,7 +8,7 @@ class Test
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Test
      *
      * @return Childtype
      */
-    public function getChild() : Childtype
+    public function getChild(): Childtype
     {
         return $this->child;
     }
@@ -40,7 +40,7 @@ class Test
      *
      * @return self
      */
-    public function setChild(Childtype $child) : self
+    public function setChild(Childtype $child): self
     {
         $this->initialized['child'] = true;
         $this->child = $child;
@@ -51,7 +51,7 @@ class Test
      *
      * @return Parenttype
      */
-    public function getParent() : Parenttype
+    public function getParent(): Parenttype
     {
         return $this->parent;
     }
@@ -62,7 +62,7 @@ class Test
      *
      * @return self
      */
-    public function setParent(Parenttype $parent) : self
+    public function setParent(Parenttype $parent): self
     {
         $this->initialized['parent'] = true;
         $this->parent = $parent;

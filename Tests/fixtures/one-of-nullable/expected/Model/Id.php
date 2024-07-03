@@ -8,7 +8,7 @@ class Id
      * @var array
      */
     protected $initialized = [];
-    public function isInitialized($property) : bool
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class Id
      *
      * @return string
      */
-    public function getUuid() : string
+    public function getUuid(): string
     {
         return $this->uuid;
     }
@@ -34,7 +34,7 @@ class Id
      *
      * @return self
      */
-    public function setUuid(string $uuid) : self
+    public function setUuid(string $uuid): self
     {
         $this->initialized['uuid'] = true;
         $this->uuid = $uuid;

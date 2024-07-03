@@ -5,6 +5,7 @@ namespace Jane\Component\JsonSchema\Guesser\Guess;
 use Jane\Component\JsonSchema\Generator\Context\Context;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
@@ -100,7 +101,7 @@ class MultipleType extends Type
     /**
      * {@inheritdoc}
      */
-    public function getTypeHint(string $namespace)
+    public function getTypeHint(string $namespace): Identifier|Name|null
     {
         if (1 === \count($this->types)) {
             $type = current($this->types);

@@ -9,6 +9,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Name;
+use PhpParser\Node\NullableType;
 use PhpParser\Node\Param;
 use PhpParser\Node\Scalar;
 use PhpParser\Node\Stmt;
@@ -25,7 +26,7 @@ trait GetterSetterGenerator
         $returnType = $property->getType()->getTypeHint($namespace);
 
         if ($returnType && (!$strict || $property->isNullable())) {
-            $returnType = '?' . $returnType;
+            $returnType = new NullableType($returnType);
         }
 
         return new Stmt\ClassMethod(
@@ -52,7 +53,7 @@ trait GetterSetterGenerator
         $setType = $property->getType()->getTypeHint($namespace);
 
         if ($setType && (!$strict || $property->isNullable())) {
-            $setType = '?' . $setType;
+            $setType = new NullableType($setType);
         }
 
         $stmts = [
@@ -91,7 +92,7 @@ trait GetterSetterGenerator
                     ),
                 ],
                 'stmts' => $stmts,
-                'returnType' => $fluent ? 'self' : null,
+                'returnType' => $fluent ? new Name('self') : null,
             ], [
                 'comments' => [$this->createSetterDoc($property, $namespace, $strict, $fluent)],
             ]

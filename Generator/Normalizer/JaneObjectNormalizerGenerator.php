@@ -5,9 +5,11 @@ namespace Jane\Component\JsonSchema\Generator\Normalizer;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt;
+use PhpParser\Node\UnionType;
 
 trait JaneObjectNormalizerGenerator
 {
@@ -15,12 +17,12 @@ trait JaneObjectNormalizerGenerator
     {
         return new Stmt\ClassMethod('supportsDenormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => 'bool',
+            'returnType' => new Identifier('bool'),
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('type')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [new Stmt\Return_(new Expr\FuncCall(new Name('array_key_exists'), [
                 new Arg(new Expr\Variable('type')),
@@ -33,11 +35,11 @@ trait JaneObjectNormalizerGenerator
     {
         return new Stmt\ClassMethod('supportsNormalization', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => 'bool',
+            'returnType' => new Identifier('bool'),
             'params' => [
                 new Param(new Expr\Variable('data')),
                 new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [new Stmt\Return_(
                 new Expr\BinaryOp\BooleanAnd(
@@ -54,11 +56,21 @@ trait JaneObjectNormalizerGenerator
     {
         return new Stmt\ClassMethod('normalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => $symfony7 ? 'array|string|int|float|bool|\ArrayObject|null' : null,
+            'returnType' => $symfony7
+                ? new UnionType([
+                    new Identifier('array'),
+                    new Identifier('string'),
+                    new Identifier('int'),
+                    new Identifier('float'),
+                    new Identifier('bool'),
+                    new Name('\ArrayObject'),
+                    new Identifier('null'),
+                ])
+                : null,
             'params' => [
-                $symfony7 ? new Param(new Expr\Variable('object'), type: 'mixed') : new Param(new Expr\Variable('object')),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
+                $symfony7 ? new Param(new Expr\Variable('object'), type: new Identifier('mixed')) : new Param(new Expr\Variable('object')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [
                 new Stmt\Expression(new Expr\Assign(
@@ -94,12 +106,12 @@ EOD
     {
         return new Stmt\ClassMethod('denormalize', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
-            'returnType' => $symfony7 ? 'mixed' : null,
+            'returnType' => $symfony7 ? new Identifier('mixed') : null,
             'params' => [
-                $symfony7 ? new Param(new Expr\Variable('data'), type: 'mixed') : new Param(new Expr\Variable('data')),
-                $symfony7 ? new Param(new Expr\Variable('type'), type: 'string') : new Param(new Expr\Variable('type')),
-                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), 'string') : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
-                new Param(new Expr\Variable('context'), new Expr\Array_(), 'array'),
+                $symfony7 ? new Param(new Expr\Variable('data'), type: new Identifier('mixed')) : new Param(new Expr\Variable('data')),
+                $symfony7 ? new Param(new Expr\Variable('type'), type: new Identifier('string')) : new Param(new Expr\Variable('type')),
+                $symfony7 ? new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null')), new Identifier('string')) : new Param(new Expr\Variable('format'), new Expr\ConstFetch(new Name('null'))),
+                new Param(new Expr\Variable('context'), new Expr\Array_(), new Identifier('array')),
             ],
             'stmts' => [
                 new Stmt\Expression(new Expr\Assign(
@@ -137,7 +149,7 @@ EOD
         return new Stmt\ClassMethod('getNormalizer', [
             'type' => Stmt\Class_::MODIFIER_PRIVATE,
             'params' => [
-                new Param(new Expr\Variable('normalizerClass'), null, 'string'),
+                new Param(new Expr\Variable('normalizerClass'), null, new Identifier('string')),
             ],
             'stmts' => [
                 new Stmt\Return_(new Expr\BinaryOp\Coalesce(
@@ -158,7 +170,7 @@ EOD
         return new Stmt\ClassMethod('initNormalizer', [
             'type' => Stmt\Class_::MODIFIER_PRIVATE,
             'params' => [
-                new Param(new Expr\Variable('normalizerClass'), null, 'string'),
+                new Param(new Expr\Variable('normalizerClass'), null, new Identifier('string')),
             ],
             'stmts' => [
                 new Stmt\Expression(new Expr\Assign(

@@ -20,15 +20,15 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema';
+            return $type === \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class;
         }
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []) : bool
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
         }
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []) : mixed
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['definitions'] as $key => $value) {
                     $value_1 = $value;
                     if (is_array($value)) {
-                        $value_1 = $this->denormalizer->denormalize($value, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value)) {
                         $value_1 = $value;
                     }
@@ -76,7 +76,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['dependencies'] as $key_1 => $value_2) {
                     $value_3 = $value_2;
                     if (is_array($value_2)) {
-                        $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_2)) {
                         $value_3 = $value_2;
                     } elseif (is_array($value_2) && $this->isOnlyNumericKeys($value_2)) {
@@ -96,7 +96,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('additionalItems', $data) && $data['additionalItems'] !== null) {
                 $value_5 = $data['additionalItems'];
                 if (is_array($data['additionalItems'])) {
-                    $value_5 = $this->denormalizer->denormalize($data['additionalItems'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_5 = $this->denormalizer->denormalize($data['additionalItems'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['additionalItems'])) {
                     $value_5 = $data['additionalItems'];
                 }
@@ -108,7 +108,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('unevaluatedItems', $data) && $data['unevaluatedItems'] !== null) {
                 $value_6 = $data['unevaluatedItems'];
                 if (is_array($data['unevaluatedItems'])) {
-                    $value_6 = $this->denormalizer->denormalize($data['unevaluatedItems'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_6 = $this->denormalizer->denormalize($data['unevaluatedItems'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['unevaluatedItems'])) {
                     $value_6 = $data['unevaluatedItems'];
                 }
@@ -120,7 +120,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('items', $data) && $data['items'] !== null) {
                 $value_7 = $data['items'];
                 if (is_array($data['items'])) {
-                    $value_7 = $this->denormalizer->denormalize($data['items'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_7 = $this->denormalizer->denormalize($data['items'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['items'])) {
                     $value_7 = $data['items'];
                 } elseif (is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
@@ -128,7 +128,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     foreach ($data['items'] as $value_8) {
                         $value_9 = $value_8;
                         if (is_array($value_8)) {
-                            $value_9 = $this->denormalizer->denormalize($value_8, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                            $value_9 = $this->denormalizer->denormalize($value_8, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                         } elseif (is_bool($value_8)) {
                             $value_9 = $value_8;
                         }
@@ -144,7 +144,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('contains', $data) && $data['contains'] !== null) {
                 $value_10 = $data['contains'];
                 if (is_array($data['contains'])) {
-                    $value_10 = $this->denormalizer->denormalize($data['contains'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_10 = $this->denormalizer->denormalize($data['contains'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['contains'])) {
                     $value_10 = $data['contains'];
                 }
@@ -156,7 +156,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('additionalProperties', $data) && $data['additionalProperties'] !== null) {
                 $value_11 = $data['additionalProperties'];
                 if (is_array($data['additionalProperties'])) {
-                    $value_11 = $this->denormalizer->denormalize($data['additionalProperties'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_11 = $this->denormalizer->denormalize($data['additionalProperties'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['additionalProperties'])) {
                     $value_11 = $data['additionalProperties'];
                 }
@@ -170,7 +170,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['unevaluatedProperties'] as $key_2 => $value_12) {
                     $value_13 = $value_12;
                     if (is_array($value_12)) {
-                        $value_13 = $this->denormalizer->denormalize($value_12, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_13 = $this->denormalizer->denormalize($value_12, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_12)) {
                         $value_13 = $value_12;
                     }
@@ -186,7 +186,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['properties'] as $key_3 => $value_14) {
                     $value_15 = $value_14;
                     if (is_array($value_14)) {
-                        $value_15 = $this->denormalizer->denormalize($value_14, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_15 = $this->denormalizer->denormalize($value_14, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_14)) {
                         $value_15 = $value_14;
                     }
@@ -202,7 +202,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['patternProperties'] as $key_4 => $value_16) {
                     $value_17 = $value_16;
                     if (is_array($value_16)) {
-                        $value_17 = $this->denormalizer->denormalize($value_16, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_17 = $this->denormalizer->denormalize($value_16, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_16)) {
                         $value_17 = $value_16;
                     }
@@ -218,7 +218,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['dependentSchemas'] as $key_5 => $value_18) {
                     $value_19 = $value_18;
                     if (is_array($value_18)) {
-                        $value_19 = $this->denormalizer->denormalize($value_18, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_19 = $this->denormalizer->denormalize($value_18, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_18)) {
                         $value_19 = $value_18;
                     }
@@ -232,7 +232,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('propertyNames', $data) && $data['propertyNames'] !== null) {
                 $value_20 = $data['propertyNames'];
                 if (is_array($data['propertyNames'])) {
-                    $value_20 = $this->denormalizer->denormalize($data['propertyNames'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_20 = $this->denormalizer->denormalize($data['propertyNames'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['propertyNames'])) {
                     $value_20 = $data['propertyNames'];
                 }
@@ -244,7 +244,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('if', $data) && $data['if'] !== null) {
                 $value_21 = $data['if'];
                 if (is_array($data['if'])) {
-                    $value_21 = $this->denormalizer->denormalize($data['if'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_21 = $this->denormalizer->denormalize($data['if'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['if'])) {
                     $value_21 = $data['if'];
                 }
@@ -256,7 +256,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('then', $data) && $data['then'] !== null) {
                 $value_22 = $data['then'];
                 if (is_array($data['then'])) {
-                    $value_22 = $this->denormalizer->denormalize($data['then'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_22 = $this->denormalizer->denormalize($data['then'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['then'])) {
                     $value_22 = $data['then'];
                 }
@@ -268,7 +268,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('else', $data) && $data['else'] !== null) {
                 $value_23 = $data['else'];
                 if (is_array($data['else'])) {
-                    $value_23 = $this->denormalizer->denormalize($data['else'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_23 = $this->denormalizer->denormalize($data['else'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['else'])) {
                     $value_23 = $data['else'];
                 }
@@ -282,7 +282,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['allOf'] as $value_24) {
                     $value_25 = $value_24;
                     if (is_array($value_24)) {
-                        $value_25 = $this->denormalizer->denormalize($value_24, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_25 = $this->denormalizer->denormalize($value_24, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_24)) {
                         $value_25 = $value_24;
                     }
@@ -298,7 +298,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['anyOf'] as $value_26) {
                     $value_27 = $value_26;
                     if (is_array($value_26)) {
-                        $value_27 = $this->denormalizer->denormalize($value_26, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_27 = $this->denormalizer->denormalize($value_26, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_26)) {
                         $value_27 = $value_26;
                     }
@@ -314,7 +314,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['oneOf'] as $value_28) {
                     $value_29 = $value_28;
                     if (is_array($value_28)) {
-                        $value_29 = $this->denormalizer->denormalize($value_28, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_29 = $this->denormalizer->denormalize($value_28, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_28)) {
                         $value_29 = $value_28;
                     }
@@ -328,7 +328,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('not', $data) && $data['not'] !== null) {
                 $value_30 = $data['not'];
                 if (is_array($data['not'])) {
-                    $value_30 = $this->denormalizer->denormalize($data['not'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_30 = $this->denormalizer->denormalize($data['not'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['not'])) {
                     $value_30 = $data['not'];
                 }
@@ -352,7 +352,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('contentSchema', $data) && $data['contentSchema'] !== null) {
                 $value_31 = $data['contentSchema'];
                 if (is_array($data['contentSchema'])) {
-                    $value_31 = $this->denormalizer->denormalize($data['contentSchema'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_31 = $this->denormalizer->denormalize($data['contentSchema'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['contentSchema'])) {
                     $value_31 = $data['contentSchema'];
                 }
@@ -418,7 +418,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['$defs'] as $key_7 => $value_33) {
                     $value_34 = $value_33;
                     if (is_array($value_33)) {
-                        $value_34 = $this->denormalizer->denormalize($value_33, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_34 = $this->denormalizer->denormalize($value_33, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_33)) {
                         $value_34 = $value_33;
                     }
@@ -629,7 +629,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $object;
         }
-        public function normalize(mixed $object, string $format = null, array $context = []) : array|string|int|float|bool|\ArrayObject|null
+        public function normalize(mixed $object, string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('definitions') && null !== $object->getDefinitions()) {
@@ -1206,9 +1206,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema' => false];
+            return [\Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => false];
         }
     }
 } else {
@@ -1218,11 +1218,11 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         use NormalizerAwareTrait;
         use CheckArray;
         use ValidatorTrait;
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []) : bool
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
         {
-            return $type === 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema';
+            return $type === \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class;
         }
-        public function supportsNormalization($data, $format = null, array $context = []) : bool
+        public function supportsNormalization($data, $format = null, array $context = []): bool
         {
             return $data instanceof \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
         }
@@ -1261,7 +1261,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['definitions'] as $key => $value) {
                     $value_1 = $value;
                     if (is_array($value)) {
-                        $value_1 = $this->denormalizer->denormalize($value, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_1 = $this->denormalizer->denormalize($value, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value)) {
                         $value_1 = $value;
                     }
@@ -1277,7 +1277,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['dependencies'] as $key_1 => $value_2) {
                     $value_3 = $value_2;
                     if (is_array($value_2)) {
-                        $value_3 = $this->denormalizer->denormalize($value_2, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_3 = $this->denormalizer->denormalize($value_2, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_2)) {
                         $value_3 = $value_2;
                     } elseif (is_array($value_2) && $this->isOnlyNumericKeys($value_2)) {
@@ -1297,7 +1297,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('additionalItems', $data) && $data['additionalItems'] !== null) {
                 $value_5 = $data['additionalItems'];
                 if (is_array($data['additionalItems'])) {
-                    $value_5 = $this->denormalizer->denormalize($data['additionalItems'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_5 = $this->denormalizer->denormalize($data['additionalItems'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['additionalItems'])) {
                     $value_5 = $data['additionalItems'];
                 }
@@ -1309,7 +1309,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('unevaluatedItems', $data) && $data['unevaluatedItems'] !== null) {
                 $value_6 = $data['unevaluatedItems'];
                 if (is_array($data['unevaluatedItems'])) {
-                    $value_6 = $this->denormalizer->denormalize($data['unevaluatedItems'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_6 = $this->denormalizer->denormalize($data['unevaluatedItems'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['unevaluatedItems'])) {
                     $value_6 = $data['unevaluatedItems'];
                 }
@@ -1321,7 +1321,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('items', $data) && $data['items'] !== null) {
                 $value_7 = $data['items'];
                 if (is_array($data['items'])) {
-                    $value_7 = $this->denormalizer->denormalize($data['items'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_7 = $this->denormalizer->denormalize($data['items'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['items'])) {
                     $value_7 = $data['items'];
                 } elseif (is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
@@ -1329,7 +1329,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                     foreach ($data['items'] as $value_8) {
                         $value_9 = $value_8;
                         if (is_array($value_8)) {
-                            $value_9 = $this->denormalizer->denormalize($value_8, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                            $value_9 = $this->denormalizer->denormalize($value_8, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                         } elseif (is_bool($value_8)) {
                             $value_9 = $value_8;
                         }
@@ -1345,7 +1345,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('contains', $data) && $data['contains'] !== null) {
                 $value_10 = $data['contains'];
                 if (is_array($data['contains'])) {
-                    $value_10 = $this->denormalizer->denormalize($data['contains'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_10 = $this->denormalizer->denormalize($data['contains'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['contains'])) {
                     $value_10 = $data['contains'];
                 }
@@ -1357,7 +1357,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('additionalProperties', $data) && $data['additionalProperties'] !== null) {
                 $value_11 = $data['additionalProperties'];
                 if (is_array($data['additionalProperties'])) {
-                    $value_11 = $this->denormalizer->denormalize($data['additionalProperties'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_11 = $this->denormalizer->denormalize($data['additionalProperties'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['additionalProperties'])) {
                     $value_11 = $data['additionalProperties'];
                 }
@@ -1371,7 +1371,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['unevaluatedProperties'] as $key_2 => $value_12) {
                     $value_13 = $value_12;
                     if (is_array($value_12)) {
-                        $value_13 = $this->denormalizer->denormalize($value_12, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_13 = $this->denormalizer->denormalize($value_12, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_12)) {
                         $value_13 = $value_12;
                     }
@@ -1387,7 +1387,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['properties'] as $key_3 => $value_14) {
                     $value_15 = $value_14;
                     if (is_array($value_14)) {
-                        $value_15 = $this->denormalizer->denormalize($value_14, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_15 = $this->denormalizer->denormalize($value_14, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_14)) {
                         $value_15 = $value_14;
                     }
@@ -1403,7 +1403,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['patternProperties'] as $key_4 => $value_16) {
                     $value_17 = $value_16;
                     if (is_array($value_16)) {
-                        $value_17 = $this->denormalizer->denormalize($value_16, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_17 = $this->denormalizer->denormalize($value_16, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_16)) {
                         $value_17 = $value_16;
                     }
@@ -1419,7 +1419,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['dependentSchemas'] as $key_5 => $value_18) {
                     $value_19 = $value_18;
                     if (is_array($value_18)) {
-                        $value_19 = $this->denormalizer->denormalize($value_18, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_19 = $this->denormalizer->denormalize($value_18, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_18)) {
                         $value_19 = $value_18;
                     }
@@ -1433,7 +1433,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('propertyNames', $data) && $data['propertyNames'] !== null) {
                 $value_20 = $data['propertyNames'];
                 if (is_array($data['propertyNames'])) {
-                    $value_20 = $this->denormalizer->denormalize($data['propertyNames'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_20 = $this->denormalizer->denormalize($data['propertyNames'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['propertyNames'])) {
                     $value_20 = $data['propertyNames'];
                 }
@@ -1445,7 +1445,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('if', $data) && $data['if'] !== null) {
                 $value_21 = $data['if'];
                 if (is_array($data['if'])) {
-                    $value_21 = $this->denormalizer->denormalize($data['if'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_21 = $this->denormalizer->denormalize($data['if'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['if'])) {
                     $value_21 = $data['if'];
                 }
@@ -1457,7 +1457,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('then', $data) && $data['then'] !== null) {
                 $value_22 = $data['then'];
                 if (is_array($data['then'])) {
-                    $value_22 = $this->denormalizer->denormalize($data['then'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_22 = $this->denormalizer->denormalize($data['then'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['then'])) {
                     $value_22 = $data['then'];
                 }
@@ -1469,7 +1469,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('else', $data) && $data['else'] !== null) {
                 $value_23 = $data['else'];
                 if (is_array($data['else'])) {
-                    $value_23 = $this->denormalizer->denormalize($data['else'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_23 = $this->denormalizer->denormalize($data['else'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['else'])) {
                     $value_23 = $data['else'];
                 }
@@ -1483,7 +1483,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['allOf'] as $value_24) {
                     $value_25 = $value_24;
                     if (is_array($value_24)) {
-                        $value_25 = $this->denormalizer->denormalize($value_24, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_25 = $this->denormalizer->denormalize($value_24, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_24)) {
                         $value_25 = $value_24;
                     }
@@ -1499,7 +1499,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['anyOf'] as $value_26) {
                     $value_27 = $value_26;
                     if (is_array($value_26)) {
-                        $value_27 = $this->denormalizer->denormalize($value_26, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_27 = $this->denormalizer->denormalize($value_26, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_26)) {
                         $value_27 = $value_26;
                     }
@@ -1515,7 +1515,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['oneOf'] as $value_28) {
                     $value_29 = $value_28;
                     if (is_array($value_28)) {
-                        $value_29 = $this->denormalizer->denormalize($value_28, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_29 = $this->denormalizer->denormalize($value_28, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_28)) {
                         $value_29 = $value_28;
                     }
@@ -1529,7 +1529,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('not', $data) && $data['not'] !== null) {
                 $value_30 = $data['not'];
                 if (is_array($data['not'])) {
-                    $value_30 = $this->denormalizer->denormalize($data['not'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_30 = $this->denormalizer->denormalize($data['not'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['not'])) {
                     $value_30 = $data['not'];
                 }
@@ -1553,7 +1553,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if (\array_key_exists('contentSchema', $data) && $data['contentSchema'] !== null) {
                 $value_31 = $data['contentSchema'];
                 if (is_array($data['contentSchema'])) {
-                    $value_31 = $this->denormalizer->denormalize($data['contentSchema'], 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                    $value_31 = $this->denormalizer->denormalize($data['contentSchema'], \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                 } elseif (is_bool($data['contentSchema'])) {
                     $value_31 = $data['contentSchema'];
                 }
@@ -1619,7 +1619,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
                 foreach ($data['$defs'] as $key_7 => $value_33) {
                     $value_34 = $value_33;
                     if (is_array($value_33)) {
-                        $value_34 = $this->denormalizer->denormalize($value_33, 'Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema', 'json', $context);
+                        $value_34 = $this->denormalizer->denormalize($value_33, \Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class, 'json', $context);
                     } elseif (is_bool($value_33)) {
                         $value_34 = $value_33;
                     }
@@ -2410,9 +2410,9 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             }
             return $data;
         }
-        public function getSupportedTypes(?string $format = null) : array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['Jane\\Component\\JsonSchema\\JsonSchema\\Model\\JsonSchema' => false];
+            return [\Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema::class => false];
         }
     }
 }

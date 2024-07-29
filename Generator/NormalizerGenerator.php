@@ -294,6 +294,11 @@ class NormalizerGenerator implements GeneratorInterface
             );
         }
 
+        if (isset($arrayItems[0]) && $arrayItems[0] instanceof Expr\ArrayItem) {
+            // force the array to be dumped multiline by adding a comment
+            $arrayItems[0]->setAttribute('comments', [new Comment('')]);
+        }
+
         return new Stmt\ClassMethod('getSupportedTypes', [
             'type' => Stmt\Class_::MODIFIER_PUBLIC,
             'returnType' => new Identifier('array'),

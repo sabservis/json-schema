@@ -62,7 +62,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\BarItem::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\HelloWorld::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
+            return [
+                
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\BarItem::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\HelloWorld::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
     }
 } else {
@@ -122,7 +128,13 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\BarItem::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\HelloWorld::class => false, \Jane\Component\JsonSchemaRuntime\Reference::class => false];
+            return [
+                
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\BarItem::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\HelloWorld::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
     }
 }

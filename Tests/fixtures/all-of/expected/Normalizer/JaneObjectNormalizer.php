@@ -70,7 +70,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false];
+            return [
+                
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false,
+            ];
         }
     }
 } else {
@@ -138,7 +148,17 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false, \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false];
+            return [
+                
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Test::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Otherchildtype::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Childtype::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Parenttype::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Foo::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Bar::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\Baz::class => false,
+                \Jane\Component\JsonSchema\Tests\Expected\Model\BazBaz::class => false,
+            ];
         }
     }
 }

@@ -56,7 +56,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false];
+            return [
+                
+                \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false,
+            ];
         }
     }
 } else {
@@ -110,7 +113,10 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         }
         public function getSupportedTypes(?string $format = null): array
         {
-            return [\Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false];
+            return [
+                
+                \Jane\Component\JsonSchema\Tests\Expected\Schema2\Model\Foo::class => false,
+            ];
         }
     }
 }

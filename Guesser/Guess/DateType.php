@@ -13,6 +13,8 @@ use PhpParser\Node\Scalar;
  */
 class DateType extends ObjectType
 {
+    use CheckNullableTrait;
+
     /**
      * Format of the date to use.
      *
@@ -63,6 +65,13 @@ class DateType extends ObjectType
      */
     protected function createNormalizationValueStatement(Context $context, Expr $input, bool $normalizerFromObject = true): Expr
     {
+        if ($this->isNullable($this->object)) {
+            // $object?->format($format);
+            return new Expr\NullsafeMethodCall($input, 'format', [
+                new Arg(new Scalar\String_($this->format)),
+            ]);
+        }
+
         // $object->format($format);
         return new Expr\MethodCall($input, 'format', [
             new Arg(new Scalar\String_($this->format)),

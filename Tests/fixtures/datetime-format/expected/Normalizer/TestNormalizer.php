@@ -75,7 +75,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         {
             $data = [];
             if ($object->isInitialized('date') && null !== $object->getDate()) {
-                $data['date'] = $object->getDate()->format('l, d-M-y H:i:s T');
+                $data['date'] = $object->getDate()?->format('l, d-M-y H:i:s T');
             }
             if ($object->isInitialized('dateOrNull') && null !== $object->getDateOrNull()) {
                 $value = $object->getDateOrNull();
@@ -89,7 +89,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('dateOrNullOrInt') && null !== $object->getDateOrNullOrInt()) {
                 $value_1 = $object->getDateOrNullOrInt();
                 if (is_object($object->getDateOrNullOrInt())) {
-                    $value_1 = $object->getDateOrNullOrInt()->format('l, d-M-y H:i:s T');
+                    $value_1 = $object->getDateOrNullOrInt()?->format('l, d-M-y H:i:s T');
                 } elseif (is_null($object->getDateOrNullOrInt())) {
                     $value_1 = $object->getDateOrNullOrInt();
                 } elseif (is_int($object->getDateOrNullOrInt())) {
@@ -172,7 +172,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
         {
             $data = [];
             if ($object->isInitialized('date') && null !== $object->getDate()) {
-                $data['date'] = $object->getDate()->format('l, d-M-y H:i:s T');
+                $data['date'] = $object->getDate()?->format('l, d-M-y H:i:s T');
             }
             if ($object->isInitialized('dateOrNull') && null !== $object->getDateOrNull()) {
                 $value = $object->getDateOrNull();
@@ -186,7 +186,7 @@ if (!class_exists(Kernel::class) or (Kernel::MAJOR_VERSION >= 7 or Kernel::MAJOR
             if ($object->isInitialized('dateOrNullOrInt') && null !== $object->getDateOrNullOrInt()) {
                 $value_1 = $object->getDateOrNullOrInt();
                 if (is_object($object->getDateOrNullOrInt())) {
-                    $value_1 = $object->getDateOrNullOrInt()->format('l, d-M-y H:i:s T');
+                    $value_1 = $object->getDateOrNullOrInt()?->format('l, d-M-y H:i:s T');
                 } elseif (is_null($object->getDateOrNullOrInt())) {
                     $value_1 = $object->getDateOrNullOrInt();
                 } elseif (is_int($object->getDateOrNullOrInt())) {

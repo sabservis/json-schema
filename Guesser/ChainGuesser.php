@@ -32,6 +32,22 @@ class ChainGuesser implements TypeGuesserInterface, PropertiesGuesserInterface, 
         }
     }
 
+    public function guessEnums($object, string $name, string $reference, Registry $registry): void
+    {
+        foreach ($this->guessers as $guesser) {
+            if (!($guesser instanceof EnumGuesserInterface)) {
+                continue;
+            }
+
+            if ($guesser->supportObject($object)) {
+                $guesser->guessEnum($object, $name, $reference, $registry);
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function guessType($object, string $name, string $reference, Registry $registry): Type
     {
         $type = null;

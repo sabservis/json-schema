@@ -6,6 +6,7 @@ use Jane\Component\JsonSchema\Guesser\Guess\Type;
 use Jane\Component\JsonSchema\JsonSchema\Model\JsonSchema;
 use Jane\Component\JsonSchema\Registry\Registry;
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Jane\Component\OpenApi3\JsonSchema\Model\Schema;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeGuesserInterface, ChainGuesserAwareInterface
@@ -28,6 +29,10 @@ class ReferenceGuesser implements ClassGuesserInterface, GuesserInterface, TypeG
      */
     public function guessClass($object, string $name, string $reference, Registry $registry): void
     {
+        if (!$object instanceof Reference) {
+            return;
+        }
+
         if ($object->isInCurrentDocument()) {
             return;
         }
